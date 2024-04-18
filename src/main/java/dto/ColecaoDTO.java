@@ -1,7 +1,6 @@
 package dto;
 
 import java.util.List;
-
 import model.Sapato;
 
 public record ColecaoDTO (
@@ -9,6 +8,6 @@ public record ColecaoDTO (
 ) {
 
     public List<Sapato> getSapatos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSapatos'");
-    }}
+        return getSapatos();
+    }
+  }

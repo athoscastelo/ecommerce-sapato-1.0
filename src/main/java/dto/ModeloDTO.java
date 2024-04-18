@@ -1,5 +1,7 @@
 package dto;
 
-public record ModeloDTO() {
-    
+public record ModeloDTO(
+        String nome
+) {
 }
+

@@ -6,6 +6,7 @@ package model;
     import jakarta.persistence.Id;
     import jakarta.persistence.JoinColumn;
     import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
     
     @Entity
     public class Sapato {
@@ -14,8 +15,6 @@ package model;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         
-        @ManyToOne
-        @JoinColumn(name = "numeracao_id")
         private Numeracao numeracao;
 
         private float preco;
@@ -25,15 +24,15 @@ package model;
         @JoinColumn(name = "fornecedor_id")
         private Fornecedor fornecedor;
         
-        @ManyToOne
+        @OneToOne
         @JoinColumn(name = "marca_id")
         private Marca marca;
         
-        @ManyToOne
+        @OneToOne
         @JoinColumn(name = "cor_id")
         private Cor cor;
         
-        @ManyToOne
+        @OneToOne
         @JoinColumn(name = "modelo_id")
         private Modelo modelo;
         

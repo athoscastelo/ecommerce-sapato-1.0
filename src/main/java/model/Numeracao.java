@@ -1,10 +1,8 @@
 package model;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.quarkus.runtime.annotations.RegisterForReflection;
 
-@RegisterForReflection
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Numeracao {
     TRINTA_QUATRO(34, "Trinta e quatro"),

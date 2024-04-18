@@ -1,4 +1,5 @@
 package dto;
 
-public record MarcaDTO() {
-}
+public record MarcaDTO (
+    String nome
+) {}

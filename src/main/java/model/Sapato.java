@@ -38,6 +38,10 @@ public class Sapato extends DefaultEntity {
     @JoinColumn(name = "modelo_id")
     private Modelo modelo;
 
+    @ManyToOne
+    @JoinColumn(name = "colecao_id")
+    private Colecao colecao;
+
     public Numeracao getNumeracao() {
         return numeracao;
     }

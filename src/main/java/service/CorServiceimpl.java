@@ -8,9 +8,9 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import model.Cor;
 import repository.CorRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @ApplicationScoped
 public class CorServiceimpl implements CorService {

@@ -8,7 +8,6 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import model.Marca;
 import repository.MarcaRepository;
-
 import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,10 +23,10 @@ public class MarcaServiceimpl implements MarcaService {
     public MarcaResponseDTO create(@Valid MarcaDTO dto) {
         Marca marca = new Marca();
         marca.setNome(dto.nome());
-        marca.persist();
+        marcaRepository.persist(marca);
         return MarcaResponseDTO.valueOf(marca);
     }
-
+    
     @Override
     @Transactional
     public MarcaResponseDTO update(Long id, @Valid MarcaDTO dto) {
@@ -36,9 +35,10 @@ public class MarcaServiceimpl implements MarcaService {
             throw new IllegalArgumentException("Marca não encontrada com o ID: " + id);
         }
         marca.setNome(dto.nome());
+        marcaRepository.persist(marca); 
         return MarcaResponseDTO.valueOf(marca);
     }
-
+    
     @Override
     @Transactional
     public void delete(Long id) {
@@ -46,8 +46,9 @@ public class MarcaServiceimpl implements MarcaService {
         if (marca == null) {
             throw new IllegalArgumentException("Marca não encontrada com o ID: " + id);
         }
-        marca.delete();
+        marcaRepository.delete(marca); 
     }
+    
 
     @Override
     public MarcaResponseDTO findById(Long id) {

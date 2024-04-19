@@ -1,105 +1,86 @@
 package model;
 
-    import jakarta.persistence.Entity;
-    import jakarta.persistence.GeneratedValue;
-    import jakarta.persistence.GenerationType;
-    import jakarta.persistence.Id;
-    import jakarta.persistence.JoinColumn;
-    import jakarta.persistence.ManyToOne;
-    import jakarta.persistence.OneToOne;
-    
-    @Entity
-    public class Sapato {
-    
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        
-        private Numeracao numeracao;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
-        private float preco;
-        private int estoque;
-        
-        @ManyToOne
-        @JoinColumn(name = "fornecedor_id")
-        private Fornecedor fornecedor;
-        
-        @OneToOne
-        @JoinColumn(name = "marca_id")
-        private Marca marca;
-        
-        @OneToOne
-        @JoinColumn(name = "cor_id")
-        private Cor cor;
-        
-        @OneToOne
-        @JoinColumn(name = "modelo_id")
-        private Modelo modelo;
-        
-                
-        public Numeracao getNumeracao() {
-            return numeracao;
-        }
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Sapato extends DefaultEntity {
 
-        public void setNumeracao(Numeracao numeracao) {
-            this.numeracao = numeracao;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        public Long getId() {
-            return id;
-        }
+    private Numeracao numeracao;
 
-        public void setId(Long id) {
-            this.id = id;
-        }
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
 
-        public float getPreco() {
-            return preco;
-        }
-    
-        public void setPreco(float preco) {
-            this.preco = preco;
-        }
-    
-        public int getEstoque() {
-            return estoque;
-        }
-    
-        public void setEstoque(int estoque) {
-            this.estoque = estoque;
-        }
-    
-        public Fornecedor getFornecedor() {
-            return fornecedor;
-        }
-    
-        public void setFornecedor(Fornecedor fornecedor) {
-            this.fornecedor = fornecedor;
-        }
-    
-        public Marca getMarca() {
-            return marca;
-        }
-    
-        public void setMarca(Marca marca) {
-            this.marca = marca;
-        }
-    
-        public Cor getCor() {
-            return cor;
-        }
-    
-        public void setCor(Cor cor) {
-            this.cor = cor;
-        }
-    
-        public Modelo getModelo() {
-            return modelo;
-        }
-    
-        public void setModelo(Modelo modelo) {
-            this.modelo = modelo;
-        }
+    @OneToOne
+    @JoinColumn(name = "marca_id")
+    private Marca marca;
+
+    @OneToOne
+    @JoinColumn(name = "cor_id")
+    private Cor cor;
+
+    @OneToOne
+    @JoinColumn(name = "modelo_id")
+    private Modelo modelo;
+
+    public Numeracao getNumeracao() {
+        return numeracao;
     }
-    
 
+    public void setNumeracao(Numeracao numeracao) {
+        this.numeracao = numeracao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Cor getCor() {
+        return cor;
+    }
+
+    public void setCor(Cor cor) {
+        this.cor = cor;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+}

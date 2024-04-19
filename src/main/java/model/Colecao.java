@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Colecao {
+public class Colecao extends DefaultEntity {
 
     @Id
     private Long id;

@@ -9,8 +9,8 @@ import java.util.List;
 @ApplicationScoped
 public class SapatoRepository implements PanacheRepository<Sapato> {
 
-    public List<Sapato> findByCodigo(int codigo) {
-        return list("codigo", codigo);
+    public Sapato findById(Long id) {
+        return findById(id);
     }
 
     public List<Sapato> findByPreco(float preco) {
@@ -20,5 +20,5 @@ public class SapatoRepository implements PanacheRepository<Sapato> {
     public List<Sapato> findByEstoque(int estoque) {
         return list("estoque", estoque);
     }
-
 }
+

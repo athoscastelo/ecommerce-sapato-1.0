@@ -1,10 +1,11 @@
 package model;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-public class Marca extends PanacheEntity {
+public class Marca extends DefaultEntity {
     
+    @Id
     private Long id;
     public Long getId() {
         return id;
@@ -25,8 +26,4 @@ public class Marca extends PanacheEntity {
         this.nome = nome;
     }
 
-
-    public static Marca findById(Long id) {
-        return find("id", id).firstResult();
-    }
 }

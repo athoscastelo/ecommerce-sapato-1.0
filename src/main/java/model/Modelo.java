@@ -1,12 +1,12 @@
 package model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-public class Modelo extends PanacheEntity {
-    
+public class Modelo extends DefaultEntity {
+    @Id
     private Long id;
     public Long getId() {
         return id;
@@ -26,7 +26,5 @@ public class Modelo extends PanacheEntity {
         this.nome = nome;
     }
 
-    public static Modelo findById(Long id) {
-        return find("id", id).firstResult();
-    }
+
 }

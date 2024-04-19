@@ -1,10 +1,12 @@
 package model;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
 @Entity
-public class Fornecedor extends PanacheEntity {
+public class Fornecedor extends DefaultEntity {
     
-    
+    @Id
     private Long id;
     private String nome;
     private String cnpj;
@@ -37,9 +39,6 @@ public class Fornecedor extends PanacheEntity {
         this.telefone = telefone;
     }
 
-    public static Fornecedor findById(Long id) {
-        return find("id", id).firstResult();
-    }
     public Long getId() {
         return id;
     }

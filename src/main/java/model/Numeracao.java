@@ -2,7 +2,6 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Numeracao {
     TRINTA_QUATRO(34, "Trinta e quatro"),
@@ -43,15 +42,6 @@ public enum Numeracao {
         throw new IllegalArgumentException("Valor numérico inválido: " + valor);
     }
 
-    public static Numeracao findById(Long id) {
-        int valor = id.intValue();
-        for (Numeracao num : Numeracao.values()) {
-            if (num.valor == valor) {
-                return num;
-            }
-        }
-        throw new IllegalArgumentException("Não foi possível encontrar a numeração com o ID: " + id);
-    }
 
 }
 

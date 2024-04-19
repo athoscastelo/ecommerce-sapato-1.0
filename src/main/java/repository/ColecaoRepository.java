@@ -12,4 +12,7 @@ public class ColecaoRepository implements PanacheRepository<Colecao> {
     public List<Colecao> findByColecaoNome(String nomeColecao) {
         return list("nome", nomeColecao);
     }
+    public Colecao findById(Long id) {
+        return find("id", id).firstResult();
+    }
 }

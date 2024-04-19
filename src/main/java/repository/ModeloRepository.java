@@ -12,8 +12,8 @@ public class ModeloRepository implements PanacheRepository<Modelo> {
     public List<Modelo> findByNome(String nome) {
         return list("nome", nome);
     }
-
+    
     public Modelo findById(Long id) {
-        return findById(id);
+        return find("id", id).firstResult();
     }
 }

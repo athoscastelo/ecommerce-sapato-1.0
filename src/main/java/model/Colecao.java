@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,7 +15,7 @@ public class Colecao extends DefaultEntity {
     private Long id;
     private String nome;
 
-    @OneToMany(mappedBy = "colecao", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany
     private List<Sapato> sapatos;
 
 

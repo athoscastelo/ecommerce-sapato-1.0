@@ -9,7 +9,6 @@ import repository.ModeloRepository;
 import dto.ModeloDTO;
 import dto.ModeloResponseDTO;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,21 +28,18 @@ public class ModeloServiceimpl implements ModeloService {
         return ModeloResponseDTO.valueOf(modelo);
     }
 
-    @Override
-    @Transactional
-    public ModeloResponseDTO update(Long id, @Valid ModeloDTO dto) {
+
+@Override
+@Transactional
+public ModeloResponseDTO update(Long id, @Valid ModeloDTO dto) {
     Modelo modelo = modeloRepository.findById(id);
     if (modelo == null) {
         throw new IllegalArgumentException("Modelo não encontrado com o ID: " + id);
     }
-
     modelo.setNome(dto.nome());
-
-    modeloRepository.persist(modelo);
-
+    modeloRepository.persist(modelo); 
     return ModeloResponseDTO.valueOf(modelo);
 }
-
 
 @Override
 @Transactional
@@ -52,16 +48,14 @@ public void delete(Long id) {
     if (modelo == null) {
         throw new IllegalArgumentException("Modelo não encontrado com o ID: " + id);
     }
-    modeloRepository.delete(modelo);
+    modeloRepository.delete(modelo); 
 }
-
 
 @Override
 public ModeloResponseDTO findById(Long id) {
     Modelo modelo = modeloRepository.findById(id);
     return modelo != null ? ModeloResponseDTO.valueOf(modelo) : null;
 }
-
 
 @Override
 public List<ModeloResponseDTO> findAll() {

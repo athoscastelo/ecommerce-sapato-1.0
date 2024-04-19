@@ -1,9 +1,11 @@
 package model;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "fornecedor") 
 public class Fornecedor extends DefaultEntity {
     
     @Id
@@ -12,7 +14,6 @@ public class Fornecedor extends DefaultEntity {
     private String cnpj;
     private String endereco;
     private String telefone;
-    
 
     public String getNome() {
         return nome;

@@ -5,6 +5,7 @@ import model.Sapato;
 
 public record ColecaoDTO (
     String nome
+    
 ) {
 
     public List<Sapato> getSapatos() {

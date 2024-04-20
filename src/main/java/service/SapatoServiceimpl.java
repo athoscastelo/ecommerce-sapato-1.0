@@ -24,6 +24,7 @@ public class SapatoServiceimpl implements SapatoService {
     @Transactional
     public SapatoResponseDTO create(@Valid SapatoDTO dto) {
         Sapato sapato = new Sapato();
+        
         sapato.setNumeracao(Numeracao.valueOf(dto.numeracao()));
         sapato.setFornecedor(dto.fornecedorId());
         sapato.setMarca(dto.marcaId());
@@ -33,25 +34,26 @@ public class SapatoServiceimpl implements SapatoService {
         return SapatoResponseDTO.valueOf(sapato);
     }
 
+   
     @Override
     @Transactional
     public SapatoResponseDTO update(Long id, @Valid SapatoDTO dto) {
-        Sapato sapato = sapatoRepository.findById(id);
-        if (sapato == null) {
-            throw new IllegalArgumentException("Sapato não encontrado com o ID: " + id);
-        }
-   
-        sapato.setNumeracao(Numeracao.valueOf(dto.numeracao()));
-        sapato.setFornecedor(dto.fornecedorId());
-        sapato.setMarca(dto.marcaId());
-        sapato.setCor(dto.corId());
-        sapato.setModelo(dto.modeloId());
-    
-        sapatoRepository.persist(sapato);
-    
-        return SapatoResponseDTO.valueOf(sapato);
+    Sapato sapato = sapatoRepository.findById(id);
+    if (sapato == null) {
+        throw new IllegalArgumentException("Sapato não encontrado com o ID: " + id);
     }
-    
+
+    sapato.setNumeracao(Numeracao.valueOf(dto.numeracao()));
+    sapato.setFornecedor(dto.fornecedorId());
+    sapato.setMarca(dto.marcaId());
+    sapato.setCor(dto.corId());
+    sapato.setModelo(dto.modeloId());
+
+    sapatoRepository.persist(sapato);
+
+    return SapatoResponseDTO.valueOf(sapato);
+}
+
 
     @Override
     @Transactional

@@ -20,6 +20,14 @@ public enum Numeracao {
     private int valor;
     private String nome;
 
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     Numeracao(int valor, String nome) {
         this.valor = valor;
         this.nome = nome;
@@ -33,14 +41,15 @@ public enum Numeracao {
         return nome;
     }
 
-    public static Numeracao valueOf(Long valor) throws IllegalArgumentException {
-        for (Numeracao numeracao : Numeracao.values()) {
-            if (numeracao.valor == valor)
-                return numeracao;
-        }
-        throw new IllegalArgumentException("id numeração inválido.");
-    }
 
+    public static Numeracao valueOf(Numeracao numeracao) {
+        for (Numeracao num : Numeracao.values()) {
+            if (num.equals(numeracao)) {
+                return num;
+            }
+        }
+        throw new IllegalArgumentException("Numeracao não encontrada: " + numeracao);
+    }
 
 }
 

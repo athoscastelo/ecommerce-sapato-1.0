@@ -34,22 +34,23 @@ public class SapatoResourceTest {
         .body("id", is(1));
     }
 
-   // @Test
-   // public void createTest() {
-      //  SapatoDTO dto = new SapatoDTO(34, 1, 2, 3, 1);
+    // @Test
+    // public void createTest() {
+    //  SapatoDTO dto = new SapatoDTO(34, 1, 2, 3, 1);
     
-      //  given()
-       // .contentType(MediaType.APPLICATION_JSON)
-       // .body(dto)
-       // .when()
-        //.get("/sapatos/1")
-       // .then()
-        //.statusCode(200)
-       // .body("id", is(1));
-   // }
+    //  given()
+    // .contentType(MediaType.APPLICATION_JSON)
+    // .body(dto)
+    // .when()
+    //.get("/sapatos/1")
+    // .then()
+    //.statusCode(200)
+    // .body("id", is(1));
+    // }
 
    public void updateTest(){
 
+    
    }
 }
 

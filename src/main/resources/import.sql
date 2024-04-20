@@ -17,7 +17,7 @@ INSERT INTO fornecedor (id, nome, cnpj, endereco, telefone) VALUES
 (1, 'Fornecedor C', '1234567890003', 'Rua C, 789', '(33) 1234-5678'),
 (2, 'Fornecedor D', '1234567890004', 'Rua D, 1011', '(44) 9876-5432');
 
-INSERT INTO sapato (numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES
-(1, 1, 1, 1, 1),
-(2, 1, 2, 2, 2),
-(3, 2, 3, 3, 3);
+INSERT INTO sapato (fornecedor_id, marca_id, cor_id, modelo_id) VALUES
+(1, 1, 1, 1),
+(1, 2, 2, 2),
+(1, 3, 3, 3);

@@ -4,7 +4,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import model.Numeracao;
 import model.Sapato;
 import repository.SapatoRepository;
 import dto.SapatoDTO;
@@ -24,36 +23,33 @@ public class SapatoServiceimpl implements SapatoService {
     @Transactional
     public SapatoResponseDTO create(@Valid SapatoDTO dto) {
         Sapato sapato = new Sapato();
-        
-        sapato.setNumeracao(Numeracao.valueOf(dto.numeracao()));
         sapato.setFornecedor(dto.fornecedorId());
         sapato.setMarca(dto.marcaId());
         sapato.setCor(dto.corId());
         sapato.setModelo(dto.modeloId());
+
         sapatoRepository.persist(sapato);
         return SapatoResponseDTO.valueOf(sapato);
     }
 
-   
     @Override
     @Transactional
     public SapatoResponseDTO update(Long id, @Valid SapatoDTO dto) {
-    Sapato sapato = sapatoRepository.findById(id);
-    if (sapato == null) {
-        throw new IllegalArgumentException("Sapato não encontrado com o ID: " + id);
+        Sapato sapato = sapatoRepository.findById(id);
+        if (sapato == null) {
+            throw new IllegalArgumentException("Sapato não encontrado com o ID: " + id);
+        }
+   
+        sapato.setFornecedor(dto.fornecedorId());
+        sapato.setMarca(dto.marcaId());
+        sapato.setCor(dto.corId());
+        sapato.setModelo(dto.modeloId());
+    
+        sapatoRepository.persist(sapato);
+    
+        return SapatoResponseDTO.valueOf(sapato);
     }
-
-    sapato.setNumeracao(Numeracao.valueOf(dto.numeracao()));
-    sapato.setFornecedor(dto.fornecedorId());
-    sapato.setMarca(dto.marcaId());
-    sapato.setCor(dto.corId());
-    sapato.setModelo(dto.modeloId());
-
-    sapatoRepository.persist(sapato);
-
-    return SapatoResponseDTO.valueOf(sapato);
-}
-
+    
 
     @Override
     @Transactional

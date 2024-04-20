@@ -4,11 +4,9 @@ import model.Cor;
 import model.Fornecedor;
 import model.Marca;
 import model.Modelo;
-import model.Numeracao;
 
 public record SapatoDTO (
-    Long id,
-    Numeracao numeracao,
+    Long numeracaoId,
     Fornecedor fornecedorId,
     Marca marcaId,
     Cor corId,

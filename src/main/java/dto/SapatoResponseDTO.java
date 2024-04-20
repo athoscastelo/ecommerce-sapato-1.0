@@ -1,26 +1,27 @@
 package dto;
 
+import model.Cor;
+import model.Fornecedor;
+import model.Marca;
+import model.Modelo;
 import model.Sapato;
 
 public record SapatoResponseDTO (
     Long id,
-    int numeracao, 
-    FornecedorResponseDTO fornecedor,
-    MarcaResponseDTO marca,
-    CorResponseDTO cor,
-    ModeloResponseDTO modelo
+    Fornecedor fornecedor,
+    Marca marca,
+    Cor cor,
+    Modelo modelo
 ) { 
     public static SapatoResponseDTO valueOf(Sapato sapato) {
         return new SapatoResponseDTO(
             sapato.getId(),
-            sapato.getNumeracao().getValor(),
-            FornecedorResponseDTO.valueOf(sapato.getFornecedor()),
-            MarcaResponseDTO.valueOf(sapato.getMarca()), 
-            CorResponseDTO.valueOf(sapato.getCor()), 
-            ModeloResponseDTO.valueOf(sapato.getModelo()) 
+            sapato.getFornecedor(),
+            sapato.getMarca(), 
+            sapato.getCor(), 
+            sapato.getModelo() 
         );
     }
-    
 }
 
 

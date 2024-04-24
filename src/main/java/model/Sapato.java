@@ -11,8 +11,6 @@ public class Sapato extends DefaultEntity {
 
 
 
-
-
     private Double preco;
 
     private Integer estoque;

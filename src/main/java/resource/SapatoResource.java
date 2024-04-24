@@ -28,8 +28,8 @@ public class SapatoResource {
 
     @GET
     @Path("/{id}")
-    public SapatoResponseDTO findById(@PathParam("id") Long codigo) {
-        return sapatoService.findById(codigo);
+    public SapatoResponseDTO findById(@PathParam("id") Long id) {
+        return sapatoService.findById(id);
     }
 
     @GET

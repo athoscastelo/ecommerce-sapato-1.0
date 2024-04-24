@@ -45,7 +45,6 @@ public class SapatoServiceimpl implements SapatoService {
         sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         sapato.setCor(corRepository.findById(dto.corId()));
         sapato.setModelo(modeloRepository.findById(dto.modeloId()));
-
         sapato.setId(sapatoRepository.count() + 1L); 
         sapatoRepository.persist(sapato);
         return SapatoResponseDTO.valueOf(sapato);
@@ -87,11 +86,12 @@ public SapatoResponseDTO update(Long id, @Valid SapatoDTO dto) {
     }
 
   
-    @Override
+
+@Override
 public SapatoResponseDTO findById(Long id) {
-    Sapato sapato = sapatoRepository.findById(id);
-    return sapato != null ? SapatoResponseDTO.valueOf(sapato) : null;
+    return SapatoResponseDTO.valueOf(sapatoRepository.findById(id));
 }
+
 
     @Override
     public List<SapatoResponseDTO> findAll() {

@@ -4,44 +4,37 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Numeracao {
-    TRINTA_QUATRO(34, "Trinta e quatro"),
-    TRINTA_CINCO(35, "Trinta e cinco"),
-    TRINTA_SEIS(36, "Trinta e seis"),
-    TRINTA_SETE(37, "Trinta e sete"),
-    TRINTA_OITO(38, "Trinta e oito"),
-    TRINTA_NOVE(39, "Trinta e nove"),
-    QUARENTA(40, "Quarenta"),
-    QUARENTA_UM(41, "Quarenta e um"),
-    QUARENTA_DOIS(42, "Quarenta e dois"),
-    QUARENTA_TRES(43, "Quarenta e três"),
-    QUARENTA_QUATRO(44, "Quarenta e quatro"),
-    QUARENTA_CINCO(45, "Quarenta e cinco");
+    TRINTA_QUATRO(34),
+    TRINTA_CINCO(35),
+    TRINTA_SEIS(36),
+    TRINTA_SETE(37),
+    TRINTA_OITO(38),
+    TRINTA_NOVE(39),
+    QUARENTA(40),
+    QUARENTA_UM(41),
+    QUARENTA_DOIS(42),
+    QUARENTA_TRES(43),
+    QUARENTA_QUATRO(44),
+    QUARENTA_CINCO(45);
 
-    private int valor;
-    private String nome;
+    private int id;
 
-    Numeracao(int valor, String nome) {
-        this.valor = valor;
-        this.nome = nome;
+    Numeracao(int id) {
+        this.id = id;
     }
 
-    public int getValor() {
-        return valor;
+    public int getid() {
+        return id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public static Numeracao valueOf(Integer valor) throws IllegalArgumentException {
-        for (Numeracao num : Numeracao.values()) {
-            if (num.valor == valor) {
-                return num;
+    public static Numeracao valueOf(int id) {
+        for (Numeracao numeracao : values()) {
+            if (numeracao.getid() == id) {
+                return numeracao;
             }
         }
-        throw new IllegalArgumentException("Valor numérico inválido");
+        throw new IllegalArgumentException("id de enumeração inválido: " + id);
     }
-    
 
 
 }

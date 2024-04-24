@@ -6,9 +6,10 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-public interface FornecedorService {
+public interface FornecedorService  {
 
     FornecedorResponseDTO create(@Valid FornecedorDTO dto);
+    
 
     FornecedorResponseDTO update(Long id, @Valid FornecedorDTO dto);
 

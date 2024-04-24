@@ -41,11 +41,10 @@ public class SapatoServiceimpl implements SapatoService {
         sapato.setPreco(dto.preco());
         sapato.setEstoque(dto.estoque());
         sapato.setNumeracao(Numeracao.valueOf(dto.valor_numeracao()));
-        sapato.setFornecedor(fornecedorRepository.findByid(dto.fornecedorId()));
+        sapato.setFornecedor(fornecedorRepository.findById(dto.fornecedorId()));
         sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         sapato.setCor(corRepository.findById(dto.corId()));
         sapato.setModelo(modeloRepository.findById(dto.modeloId()));
-        sapato.setId(sapatoRepository.count() + 1L); 
         sapatoRepository.persist(sapato);
         return SapatoResponseDTO.valueOf(sapato);
     }
@@ -62,7 +61,7 @@ public SapatoResponseDTO update(Long id, @Valid SapatoDTO dto) {
     sapato.setPreco(dto.preco());
     sapato.setEstoque(dto.estoque());
     sapato.setNumeracao(Numeracao.valueOf(dto.valor_numeracao()));
-    sapato.setFornecedor(fornecedorRepository.findByid(dto.fornecedorId()));
+    sapato.setFornecedor(fornecedorRepository.findById(dto.fornecedorId()));
     sapato.setMarca(marcaRepository.findById(dto.marcaId()));
     sapato.setCor(corRepository.findById(dto.corId()));
     sapato.setModelo(modeloRepository.findById(dto.modeloId()));

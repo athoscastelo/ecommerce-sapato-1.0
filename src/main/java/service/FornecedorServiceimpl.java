@@ -18,9 +18,11 @@ public class FornecedorServiceimpl implements FornecedorService {
     @Inject
     private FornecedorRepository fornecedorRepository;
 
+  
     @Override
-    @Transactional
-    public FornecedorResponseDTO create(@Valid FornecedorDTO dto) {
+@Transactional
+public FornecedorResponseDTO create(@Valid FornecedorDTO dto) {
+
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setNome(dto.nome());
         fornecedor.setCnpj(dto.cnpj());

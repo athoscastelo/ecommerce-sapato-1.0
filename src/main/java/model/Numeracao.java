@@ -33,14 +33,15 @@ public enum Numeracao {
         return nome;
     }
 
-    public static Numeracao valueOf(int valor) {
+    public static Numeracao valueOf(Integer valor) throws IllegalArgumentException {
         for (Numeracao num : Numeracao.values()) {
             if (num.valor == valor) {
                 return num;
             }
         }
-        throw new IllegalArgumentException("Valor numérico inválido: " + valor);
+        throw new IllegalArgumentException("Valor numérico inválido");
     }
+    
 
 
 }

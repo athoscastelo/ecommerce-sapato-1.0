@@ -24,10 +24,12 @@ public class SapatoResource {
     @Inject
     public SapatoService sapatoService;
 
+    
+
     @GET
     @Path("/{id}")
-    public SapatoResponseDTO findById(@PathParam("id") Long id) {
-        return sapatoService.findById(id);
+    public SapatoResponseDTO findById(@PathParam("id") Long codigo) {
+        return sapatoService.findById(codigo);
     }
 
     @GET

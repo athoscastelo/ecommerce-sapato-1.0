@@ -1,15 +1,10 @@
 package model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "fornecedor") 
 public class Fornecedor extends DefaultEntity {
-    
-    @Id
-    private Long id;
+
     private String nome;
     private String cnpj;
     private String endereco;
@@ -39,10 +34,4 @@ public class Fornecedor extends DefaultEntity {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }}
+}

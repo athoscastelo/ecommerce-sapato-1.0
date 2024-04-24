@@ -1,22 +1,37 @@
 package model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "sapato")
 public class Sapato extends DefaultEntity {
 
-    @Id
-    @JoinColumn(name = "sapato_id")
-    private Long id;
+
+
+
+
+    private Double preco;
+
+    private Integer estoque;
+    
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
+    }
 
     private Numeracao numeracao;
 
@@ -44,13 +59,6 @@ public class Sapato extends DefaultEntity {
         this.numeracao = numeracao;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Fornecedor getFornecedor() {
         return fornecedor;

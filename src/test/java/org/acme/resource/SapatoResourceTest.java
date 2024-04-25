@@ -10,6 +10,8 @@ import static io.restassured.RestAssured.given;
 
 @QuarkusTest
 public class SapatoResourceTest {
+
+    
     @Test
     public void createTest(){
         SapatoDTO dto = new SapatoDTO(11.0, 111, 39, 1L,1L,1L,1L);
@@ -33,12 +35,13 @@ public class SapatoResourceTest {
 
     @Test
     public void findByIdTest(){
+    
         given()
-        .when()
-        .get("/sapatos/1")
-        .then()
-        .statusCode(200)
-        .body("id", is(1));
+         .when()
+            .get("/sapatos/1")
+            .then()
+            .statusCode(200)
+            .body("id", is(1));
     }
 
     @Test

@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Sapato extends DefaultEntity {
@@ -37,15 +36,15 @@ public class Sapato extends DefaultEntity {
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "cor_id")
     private Cor cor;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "modelo_id")
     private Modelo modelo;
 

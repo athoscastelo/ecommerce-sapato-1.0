@@ -18,6 +18,8 @@ public class ModeloServiceimpl implements ModeloService {
     @Inject
     private ModeloRepository modeloRepository;
 
+
+
     @Override
     @Transactional
     public ModeloResponseDTO create(@Valid ModeloDTO dto) {

@@ -15,22 +15,9 @@ public class CorRepository implements PanacheRepository<Cor> {
         return list("sapato", sapato);
     }
 
-    public List<Cor> findAvailableColors() {
-        return list("estoque > 0");
+    public Cor findByid(Long id) {
+        return find("codigo", id).firstResult();
     }
 
-    public List<Cor> findByTipoSapato(String tipoSapato) {
-        return list("sapato.tipo = ?1", tipoSapato);
-    }
-
-    public void addColorToSapato(Cor cor, Sapato sapato) {
-        sapato.setCor(cor);
-        persist(cor);
-    }
-
-    public void removeColorFromSapato(Cor cor, Sapato sapato) {
-        sapato.setCor(null); 
-        persist(cor); 
-    }
 }
 

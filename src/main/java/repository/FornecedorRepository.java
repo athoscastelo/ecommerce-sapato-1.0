@@ -10,7 +10,7 @@ public class FornecedorRepository implements PanacheRepository<Fornecedor> {
 
 
     public Fornecedor findByid(Long id) {
-        return find("codigo", id).firstResult();
+        return find("id", id).firstResult();
     }
 
 

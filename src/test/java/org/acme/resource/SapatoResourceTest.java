@@ -33,7 +33,7 @@ public class SapatoResourceTest {
 
     @Test
     public void createTest() {
-        SapatoDTO dto = new SapatoDTO(34.0, 1111, 41, 2L, 1L, 1L, 1L);
+        SapatoDTO dto = new SapatoDTO(34.0, 1111, 41, 1L, 1L, 1L, 1L);
     
         given()
             .contentType(MediaType.APPLICATION_JSON)
@@ -44,7 +44,7 @@ public class SapatoResourceTest {
             .statusCode(200)
             .body("id", is(1));
         
-        SapatoDTO dto1 = new SapatoDTO(34.0, 1111, 39, 2L, 1L, 1L, 1L);
+        SapatoDTO dto1 = new SapatoDTO(34.0, 1111, 39, 1L, 1L, 1L, 1L);
     
             given()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ public class SapatoResourceTest {
                 .statusCode(200)
                 .body("id", is(2));
         
-            SapatoDTO dto2 = new SapatoDTO(36.0, 2222, 39, 2L, 1L, 1L, 1L);
+            SapatoDTO dto2 = new SapatoDTO(36.0, 2222, 39, 1L, 1L, 1L, 1L);
             
             given()
                 .contentType(MediaType.APPLICATION_JSON)
@@ -66,7 +66,7 @@ public class SapatoResourceTest {
                 .statusCode(200)
                 .body("id", is(3));
         
-            SapatoDTO dto3 = new SapatoDTO(38.0, 3333, 37, 2L, 1L, 1L, 1L);
+            SapatoDTO dto3 = new SapatoDTO(38.0, 3333, 37, 1L, 1L, 1L, 1L);
             
             given()
                 .contentType(MediaType.APPLICATION_JSON)

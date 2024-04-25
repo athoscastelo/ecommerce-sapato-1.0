@@ -7,32 +7,22 @@ import dto.ModeloDTO;
 import io.quarkus.test.junit.QuarkusTest;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 public class ModeloResourceTest {
     @Test
     public void createTest(){
-        ModeloDTO dto = new ModeloDTO("xixi");
+        ModeloDTO dto = new ModeloDTO("bonito");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
         .post("/modelos")
         .then()
-        .statusCode(200)
-        .body("id", is(1));
-
-        
-        ModeloDTO dto1 = new ModeloDTO("xixi");
-        given()
-        .contentType(MediaType.APPLICATION_JSON)
-        .body(dto1)
-        .when()
-        .post("/modelos")
-        .then()
-        .statusCode(200)
-        .body("id", is(2));
+        .statusCode(201)
+        .body("nome", is("bonito"));
     }
     @Test
     public void findAllTest(){
@@ -40,38 +30,39 @@ public class ModeloResourceTest {
         .when()
         .get("/modelos")
         .then()
-        .statusCode(200);
+        .statusCode(200)
+        .body("id", hasItem(is(1)));;
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByNomeTest(){
         given()
         .when()
         .get("/modelos/1")
         .then()
         .statusCode(200)
-        .body("id", is(1));
+        .body("nome", is("Modelo A"));
     }
 
     @Test
     public void updateTest(){
-        ModeloDTO dto = new ModeloDTO("bosta");
+        ModeloDTO dto = new ModeloDTO("Feio");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/modelos/1")
+        .put("/modelos/2")
         .then()
         .statusCode(204);
     }
-    
-    
+
     @Test
-    public void deleteTest() {
+    public void deleteTest(){
         given()
-            .when()
-            .delete("/modelos/1")
-            .then()
-            .statusCode(204);
+        .when()
+        .pathParam("id", 1)
+        .delete("/modelos/{id}")
+        .then()
+        .statusCode(204);
     }
 }

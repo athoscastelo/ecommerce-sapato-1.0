@@ -1,9 +1,7 @@
 package resource;
 
-import java.util.List;
-
 import dto.SapatoDTO;
-import dto.SapatoResponseDTO;
+import service.SapatoService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -14,7 +12,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import service.SapatoService;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,35 +23,33 @@ public class SapatoResource {
     @Inject
     public SapatoService sapatoService;
 
-    
-
     @GET
     @Path("/{id}")
-    public SapatoResponseDTO findById(@PathParam("id") Long id) {
-        return sapatoService.findById(id);
+    public Response findById(@PathParam("id") Long id) {
+        return Response.ok(sapatoService.findById(id)).build();
     }
 
     @GET
-    public List<SapatoResponseDTO> findAll() {
-        return sapatoService.findAll();
+    public Response findAll() {
+        return Response.ok(sapatoService.findAll()).build();
     }
 
     @POST
-    public SapatoResponseDTO create(SapatoDTO dto) {
-        return sapatoService.create(dto);
+    public Response create(SapatoDTO dto) {
+        return Response.status(Status.CREATED).entity(sapatoService.create(dto)).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void update(@PathParam("id") Long id, SapatoDTO dto) {
+    public Response update(@PathParam("id") Long id, SapatoDTO dto) {
         sapatoService.update(id, dto);
+        return Response.status(Status.NO_CONTENT).build();
     }
 
     @DELETE
     @Path("/{id}")
-    public void delete(@PathParam("id") Long id) {
+    public Response delete(@PathParam("id") Long id) {
         sapatoService.delete(id);
+        return Response.status(Status.NO_CONTENT).build();
     }
 }
-
-

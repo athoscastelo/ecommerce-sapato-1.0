@@ -10,7 +10,7 @@ public interface ModeloService {
 
 ModeloResponseDTO create(@Valid ModeloDTO dto);
 
- ModeloResponseDTO update(Long id, @Valid ModeloDTO dto);
+ void update(Long id, @Valid ModeloDTO dto);
 
  void delete(Long id);
 

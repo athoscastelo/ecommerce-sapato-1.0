@@ -41,11 +41,9 @@ public class SapatoResourceTest {
         .body("id", is(1));
     }
 
-    
-
     @Test
     public void updateTest(){
-        SapatoDTO dto = new SapatoDTO(20.0, 130, 40, 2L,2L,2L,2L);
+        SapatoDTO dto = new SapatoDTO(20.0, 130, 40, 4L,4L,4L,4L);
 
         given()
         .contentType(MediaType.APPLICATION_JSON)

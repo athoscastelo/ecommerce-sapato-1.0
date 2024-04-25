@@ -20,6 +20,28 @@ INSERT INTO Modelo ( nome) VALUES ( 'Modelo A');
 INSERT INTO Modelo ( nome) VALUES ( 'Modelo B');
 INSERT INTO Modelo ( nome) VALUES ('Modelo C');
 
+-- Inserts adicionais para a classe Cor
+INSERT INTO Cor (nome) VALUES ('Amarelo');
+INSERT INTO Cor (nome) VALUES ('Rosa');
+INSERT INTO Cor (nome) VALUES ('Roxo');
+INSERT INTO Cor (nome) VALUES ('Laranja');
+
+-- Inserts adicionais para a classe Fornecedor
+INSERT INTO Fornecedor (nome, cnpj, endereco, telefone) VALUES ('Fornecedor D', '78901234567890', 'Rua D, 1010', '(44) 4567-8901');
+INSERT INTO Fornecedor (nome, cnpj, endereco, telefone) VALUES ('Fornecedor E', '12345678901234', 'Rua E, 2020', '(55) 5678-9012');
+INSERT INTO Fornecedor (nome, cnpj, endereco, telefone) VALUES ('Fornecedor F', '56789012345678', 'Rua F, 3030', '(66) 6789-0123');
+
+-- Inserts adicionais para a classe Marca
+INSERT INTO Marca (nome) VALUES ('Marca A');
+INSERT INTO Marca (nome) VALUES ('Marca B');
+INSERT INTO Marca (nome) VALUES ('Marca C');
+
+-- Inserts adicionais para a classe Modelo
+INSERT INTO Modelo (nome) VALUES ('Modelo D');
+INSERT INTO Modelo (nome) VALUES ('Modelo E');
+INSERT INTO Modelo (nome) VALUES ('Modelo F');
+
+
 -- Inserts para a classe Sapato
 INSERT INTO Sapato ( preco, estoque, numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES ( 99.99, 37, 1, 1, 1, 1, 1);
 INSERT INTO Sapato ( preco, estoque, numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES ( 79.99, 39, 2, 2, 2, 2, 2);

@@ -35,13 +35,13 @@ public class CorResourceTest {
     }
 
     @Test
-    public void findByNomeTest(){
+    public void findByIdTest(){
         given()
         .when()
         .get("/cores/1")
         .then()
         .statusCode(200)
-        .body("nome", is("Cor A"));
+        .body("id", is(1));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class CorResourceTest {
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/cores/2")
+        .put("/cores/3")
         .then()
         .statusCode(204);
     }

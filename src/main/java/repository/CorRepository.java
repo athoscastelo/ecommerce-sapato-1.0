@@ -15,9 +15,7 @@ public class CorRepository implements PanacheRepository<Cor> {
         return list("sapato", sapato);
     }
 
-    public Cor findByid(Long id) {
-        return find("codigo", id).firstResult();
-    }
+
 
 }
 

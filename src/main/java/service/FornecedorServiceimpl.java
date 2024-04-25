@@ -2,13 +2,13 @@ package service;
 
 import dto.FornecedorDTO;
 import dto.FornecedorResponseDTO;
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import model.Fornecedor;
 import repository.FornecedorRepository;
-
+import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,58 +16,58 @@ import java.util.stream.Collectors;
 public class FornecedorServiceimpl implements FornecedorService {
 
     @Inject
-    private FornecedorRepository fornecedorRepository;
-
-  
-    @Override
-@Transactional
-public FornecedorResponseDTO create(@Valid FornecedorDTO dto) {
-
-        Fornecedor fornecedor = new Fornecedor();
-        fornecedor.setNome(dto.nome());
-        fornecedor.setCnpj(dto.cnpj());
-        fornecedor.setEndereco(dto.endereco());
-        fornecedor.setTelefone(dto.telefone());
-
-        fornecedorRepository.persist(fornecedor);
-
-        return FornecedorResponseDTO.valueOf(fornecedor);
-    }
+    private FornecedorRepository FornecedorRepository;
 
     @Override
     @Transactional
-    public FornecedorResponseDTO update(Long id, @Valid FornecedorDTO dto) {
-        Fornecedor fornecedor = fornecedorRepository.findById(id);
-        if (fornecedor == null) {
-            throw new IllegalArgumentException("Fornecedor não encontrado com o ID: " + id);
-        }
-        fornecedor.setNome(dto.nome());
-        fornecedor.setCnpj(dto.cnpj());
-        fornecedor.setEndereco(dto.endereco());
-        fornecedor.setTelefone(dto.telefone());
+    public FornecedorResponseDTO create(@Valid FornecedorDTO dto) {
+        Fornecedor Fornecedor = new Fornecedor();
+        Fornecedor.setNome(dto.nome());
+        Fornecedor.setCnpj(dto.cnpj());
+        Fornecedor.setEndereco(dto.endereco());
+        Fornecedor.setTelefone(dto.telefone());
 
-        return FornecedorResponseDTO.valueOf(fornecedor);
+        FornecedorRepository.persist(Fornecedor);
+        return FornecedorResponseDTO.valueOf(Fornecedor);
     }
-
+    
+    @Override
+    @Transactional
+    public void update(Long id, @Valid FornecedorDTO dto) {
+        Fornecedor Fornecedor = FornecedorRepository.findById(id);
+        if (Fornecedor == null) {
+            throw new IllegalArgumentException("Fornecedor não encontrada com o ID: " + id);
+        }
+        Fornecedor.setNome(dto.nome());
+        Fornecedor.setCnpj(dto.cnpj());
+        Fornecedor.setEndereco(dto.endereco());
+        Fornecedor.setTelefone(dto.telefone());
+        }
+    
     @Override
     @Transactional
     public void delete(Long id) {
-        Fornecedor fornecedor = fornecedorRepository.findById(id);
-        if (fornecedor == null) {
-            throw new IllegalArgumentException("Fornecedor não encontrado com o ID: " + id);
+        Fornecedor Fornecedor = FornecedorRepository.findById(id);
+        if (Fornecedor == null) {
+            throw new IllegalArgumentException("Fornecedor não encontrada com o ID: " + id);
         }
-        fornecedorRepository.delete(fornecedor);
+        FornecedorRepository.delete(Fornecedor); 
     }
+    
 
     @Override
     public FornecedorResponseDTO findById(Long id) {
-        Fornecedor fornecedor = fornecedorRepository.findById(id);
-        return fornecedor != null ? FornecedorResponseDTO.valueOf(fornecedor) : null;
+        Fornecedor Fornecedor = FornecedorRepository.findById(id);
+        return Fornecedor != null ? FornecedorResponseDTO.valueOf(Fornecedor) : null;
     }
 
     @Override
     public List<FornecedorResponseDTO> findAll() {
-        List<Fornecedor> fornecedores = fornecedorRepository.listAll();
-        return fornecedores.stream().map(FornecedorResponseDTO::valueOf).collect(Collectors.toList());
+        PanacheQuery<Fornecedor> Fornecedors = FornecedorRepository.findAll();
+        return Fornecedors.stream()
+                .map(FornecedorResponseDTO::valueOf)
+                .collect(Collectors.toList());
     }
 }
+
+

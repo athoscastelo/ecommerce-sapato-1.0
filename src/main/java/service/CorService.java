@@ -10,7 +10,7 @@ public interface CorService {
 
     CorResponseDTO create(@Valid CorDTO dto);
 
-    CorResponseDTO update(Long id, @Valid CorDTO dto);
+    void update(Long id, @Valid CorDTO dto);
 
     void delete(Long id);
 

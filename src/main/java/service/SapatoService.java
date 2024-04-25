@@ -10,7 +10,7 @@ public interface SapatoService {
 
     SapatoResponseDTO create(@Valid SapatoDTO dto);
 
-    SapatoResponseDTO update(Long id, @Valid SapatoDTO dto);
+    void update(Long id, @Valid SapatoDTO dto);
 
     void delete(Long id);
 

@@ -1,38 +1,28 @@
+
 package org.acme.resource;
 
 import org.junit.jupiter.api.Test;
-
 import jakarta.ws.rs.core.MediaType;
-
 import dto.CorDTO;
 import io.quarkus.test.junit.QuarkusTest;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 public class CorResourceTest {
     @Test
     public void createTest(){
-        CorDTO dto = new CorDTO("azul");
+        CorDTO dto = new CorDTO("bonito");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
         .post("/cores")
         .then()
-        .statusCode(200)
-        .body("id", is(1));
-
-        CorDTO dto1 = new CorDTO("vermelho");
-        given()
-        .contentType(MediaType.APPLICATION_JSON)
-        .body(dto1)
-        .when()
-        .post("/cores")
-        .then()
-        .statusCode(200)
-        .body("id", is(2));
+        .statusCode(201)
+        .body("nome", is("bonito"));
     }
     @Test
     public void findAllTest(){
@@ -40,38 +30,39 @@ public class CorResourceTest {
         .when()
         .get("/cores")
         .then()
-        .statusCode(200);
+        .statusCode(200)
+        .body("id", hasItem(is(1)));;
     }
 
     @Test
-    public void findByIdTest(){
+    public void findByNomeTest(){
         given()
         .when()
         .get("/cores/1")
         .then()
-        .statusCode(204)
-        .body("id", is(1));
+        .statusCode(200)
+        .body("nome", is("Cor A"));
     }
 
     @Test
     public void updateTest(){
-        CorDTO dto = new CorDTO("vermelho");
+        CorDTO dto = new CorDTO("Feio");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/cores/1")
+        .put("/cores/2")
         .then()
         .statusCode(204);
     }
-    
-    
+
     @Test
-    public void deleteTest() {
+    public void deleteTest(){
         given()
-            .when()
-            .delete("/cores/1")
-            .then()
-            .statusCode(204);
+        .when()
+        .pathParam("id", 1)
+        .delete("/cores/{id}")
+        .then()
+        .statusCode(204);
     }
 }

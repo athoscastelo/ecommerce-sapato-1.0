@@ -10,7 +10,7 @@ public interface MarcaService {
 
     MarcaResponseDTO create(@Valid MarcaDTO dto);
 
-    MarcaResponseDTO update(Long id, @Valid MarcaDTO dto);
+    void update(Long id, @Valid MarcaDTO dto);
 
     void delete(Long id);
 

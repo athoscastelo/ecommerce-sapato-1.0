@@ -8,8 +8,6 @@ public class Modelo extends DefaultEntity {
 
     private String nome;
 
-
-
     public String getNome() {
         return nome;
     }

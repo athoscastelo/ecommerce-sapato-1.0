@@ -9,14 +9,16 @@ import jakarta.validation.Valid;
 import model.Cor;
 import repository.CorRepository;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @ApplicationScoped
 public class CorServiceimpl implements CorService {
 
+
     @Inject
     private CorRepository corRepository;
+
+
 
     @Override
     @Transactional
@@ -28,43 +30,37 @@ public class CorServiceimpl implements CorService {
         return CorResponseDTO.valueOf(cor);
     }
 
-    @Override
-    @Transactional
-    public CorResponseDTO update(Long id, @Valid CorDTO dto) {
-        Cor cor = corRepository.findById(id);
-        if (cor == null) {
-            throw new IllegalArgumentException("Cor não encontrada com o ID: " + id);
-        }
 
-        cor.setNome(dto.nome());
-
-        corRepository.persist(cor);
-
-        return CorResponseDTO.valueOf(cor);
-    }
-
-    @Override
-    @Transactional
-    public void delete(Long id) {
-        Cor cor = corRepository.findById(id);
-        if (cor == null) {
-            throw new IllegalArgumentException("Cor não encontrada com o ID: " + id);
-        }
-        corRepository.delete(cor);
-    }
-
-    @Override
-    public CorResponseDTO findById(Long id) {
-        Cor cor = corRepository.findById(id);
-        return cor != null ? CorResponseDTO.valueOf(cor) : null;
-    }
-
-    @Override
-    public List<CorResponseDTO> findAll() {
-        List<Cor> cores = corRepository.listAll();
-        return cores.stream()
-                .map(CorResponseDTO::valueOf)
-                .collect(Collectors.toList());
-    }
+@Override
+@Transactional
+public void update(Long id, @Valid CorDTO dto) {
+    Cor cor = corRepository.findById(id);
+    cor.setNome(dto.nome());
 }
+
+@Override
+@Transactional
+public void delete(Long id) {
+    corRepository.deleteById(id);
+}
+
+
+
+@Override
+public CorResponseDTO findById(Long id) {
+    return CorResponseDTO.valueOf(corRepository.findById(id));
+}
+
+
+@Override
+public List<CorResponseDTO> findAll() {
+    return corRepository
+    .listAll()
+    .stream()
+    .map(e -> CorResponseDTO.valueOf(e)).toList();
+}
+
+
+}
+
 

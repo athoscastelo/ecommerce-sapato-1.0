@@ -10,10 +10,6 @@ import java.util.List;
 public class ModeloRepository implements PanacheRepository<Modelo> {
 
     public List<Modelo> findByNome(String nome) {
-        return list("nome", nome);
-    }
-    
-    public Modelo findById(Long id) {
-        return find("id", id).firstResult();
+        return find("UPPER(nome) LIKE ?1", "%" + nome.toUpperCase() + "%").list();
     }
 }

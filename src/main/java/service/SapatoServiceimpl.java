@@ -47,7 +47,6 @@ public class SapatoServiceimpl implements SapatoService {
         Sapato.setCor(corRepository.findById(dto.corId()));
         Sapato.setModelo(modeloRepository.findById(dto.modeloId()));
         SapatoRepository.persist(Sapato);
-        SapatoRepository.persist(Sapato);
         return SapatoResponseDTO.valueOf(Sapato);
     }
     

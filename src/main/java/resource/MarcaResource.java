@@ -24,6 +24,8 @@ public class MarcaResource {
     @Inject
     public MarcaService MarcaService;
 
+
+    @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(MarcaService.findById(id)).build();

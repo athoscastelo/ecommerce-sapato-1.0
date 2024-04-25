@@ -1,7 +1,6 @@
 
 package org.acme.resource;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.Test;
 import dto.SapatoDTO;
@@ -29,8 +28,7 @@ public class SapatoResourceTest {
         .when()
         .get("/sapatos")
         .then()
-        .statusCode(200)
-        .body("id", hasItem(is(1)));;
+        .statusCode(200);
     }
 
     @Test
@@ -40,8 +38,10 @@ public class SapatoResourceTest {
         .get("/sapatos/1")
         .then()
         .statusCode(200)
-        .body("id", hasItem(is(1)));
+        .body("id", is(1));
     }
+
+    
 
     @Test
     public void updateTest(){

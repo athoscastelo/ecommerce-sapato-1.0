@@ -24,6 +24,8 @@ public class SapatoResource {
     @Inject
     public SapatoService SapatoService;
 
+
+    @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(SapatoService.findById(id)).build();
@@ -46,6 +48,7 @@ public class SapatoResource {
         SapatoService.update(id, dto);
         return Response.status(Status.NO_CONTENT).build();
     }
+
 
     @DELETE
     @Path("/{id}")

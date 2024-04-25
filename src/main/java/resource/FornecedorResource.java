@@ -24,6 +24,7 @@ public class FornecedorResource {
     @Inject
     public FornecedorService FornecedorService;
 
+    @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(FornecedorService.findById(id)).build();

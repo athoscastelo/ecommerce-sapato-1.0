@@ -24,6 +24,7 @@ public class ModeloResource {
     @Inject
     public ModeloService modeloService;
 
+    @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(modeloService.findById(id)).build();

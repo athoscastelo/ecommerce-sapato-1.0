@@ -34,13 +34,13 @@ public class FornecedorResourceTest {
     }
 
     @Test
-    public void findByNomeTest(){
+    public void findByIdTest(){
         given()
         .when()
         .get("/fornecedores/1")
         .then()
         .statusCode(200)
-        .body("nome", is("Fornecedor A"));
+        .body("id", is(1));
     }
 
     @Test

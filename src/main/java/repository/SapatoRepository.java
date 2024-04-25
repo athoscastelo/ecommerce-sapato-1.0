@@ -10,10 +10,6 @@ import java.util.List;
 public class SapatoRepository implements PanacheRepository<Sapato> {
 
 
-    public Sapato findById(Long id) {
-        return find("id", id).firstResult();
-    }
-
     public List<Sapato> findByPreco(float preco) {
         return list("preco", preco);
     }

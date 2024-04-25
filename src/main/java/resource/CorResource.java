@@ -23,6 +23,7 @@ public class CorResource {
     @Inject
     public CorService corService;
     
+    @GET
     @Path("/{id}")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(corService.findById(id)).build();

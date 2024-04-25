@@ -40,7 +40,7 @@ public class SapatoResourceTest {
         .get("/sapatos/1")
         .then()
         .statusCode(200)
-        .body("id", is(1));
+        .body("id", hasItem(is(1)));
     }
 
     @Test

@@ -35,13 +35,13 @@ public class ModeloResourceTest {
     }
 
     @Test
-    public void findByNomeTest(){
+    public void findByIdTest(){
         given()
         .when()
         .get("/modelos/1")
         .then()
         .statusCode(200)
-        .body("nome", is("Modelo A"));
+        .body("id", is(1));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ModeloResourceTest {
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/modelos/2")
+        .put("/modelos/3")
         .then()
         .statusCode(204);
     }

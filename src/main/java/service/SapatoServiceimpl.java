@@ -53,7 +53,7 @@ public class SapatoServiceimpl implements SapatoService {
     
     @Override
     @Transactional
-    public void update(Long id, @Valid SapatoDTO dto) {
+    public void update(Long id, SapatoDTO dto) {
         Sapato Sapato = SapatoRepository.findById(id);
         if (Sapato == null) {
             throw new IllegalArgumentException("Sapato não encontrada com o ID: " + id);

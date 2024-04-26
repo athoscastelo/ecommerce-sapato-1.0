@@ -29,38 +29,36 @@ public class CorServiceimpl implements CorService {
         corRepository.persist(cor);
         return CorResponseDTO.valueOf(cor);
     }
-
-
-@Override
-@Transactional
-public void update(Long id, @Valid CorDTO dto) {
-    Cor cor = corRepository.findById(id);
-    cor.setNome(dto.nome());
-}
-
-@Override
-@Transactional
-public void delete(Long id) {
-    corRepository.deleteById(id);
-}
-
-
-
-@Override
-public CorResponseDTO findById(Long id) {
-    return CorResponseDTO.valueOf(corRepository.findById(id));
-}
-
-
-@Override
-public List<CorResponseDTO> findAll() {
-    return corRepository
-    .listAll()
-    .stream()
-    .map(e -> CorResponseDTO.valueOf(e)).toList();
-}
-
-
+    @Override
+    @Transactional
+    public void update(Long id, @Valid CorDTO dto) {
+        Cor cor = corRepository.findById(id);
+        cor.setNome(dto.nome());
+    }
+    
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        corRepository.deleteById(id);
+    }
+    
+    
+    
+    @Override
+    public CorResponseDTO findById(Long id) {
+        return CorResponseDTO.valueOf(corRepository.findById(id));
+    }
+    
+    
+    @Override
+    public List<CorResponseDTO> findAll() {
+        return corRepository
+        .listAll()
+        .stream()
+        .map(e -> CorResponseDTO.valueOf(e)).toList();
+    }
+    
+    
 }
 
 

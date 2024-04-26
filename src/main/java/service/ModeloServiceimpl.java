@@ -16,8 +16,6 @@ public class ModeloServiceimpl implements ModeloService {
     @Inject
     private ModeloRepository modeloRepository;
 
-
-
     @Override
     @Transactional
     public ModeloResponseDTO create(@Valid ModeloDTO dto) {
@@ -28,35 +26,30 @@ public class ModeloServiceimpl implements ModeloService {
         return ModeloResponseDTO.valueOf(modelo);
     }
 
+    @Override
+    @Transactional
+    public void update(Long id, @Valid ModeloDTO dto) {
+        Modelo modelo = modeloRepository.findById(id);
+        modelo.setNome(dto.nome());
+    }
 
-@Override
-@Transactional
-public void update(Long id, @Valid ModeloDTO dto) {
-    Modelo modelo = modeloRepository.findById(id);
-    modelo.setNome(dto.nome());
-}
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        modeloRepository.deleteById(id);
+    }
 
-@Override
-@Transactional
-public void delete(Long id) {
-    modeloRepository.deleteById(id);
-}
+    @Override
+    public ModeloResponseDTO findById(Long id) {
+        return ModeloResponseDTO.valueOf(modeloRepository.findById(id));
+    }
 
-
-
-@Override
-public ModeloResponseDTO findById(Long id) {
-    return ModeloResponseDTO.valueOf(modeloRepository.findById(id));
-}
-
-
-@Override
-public List<ModeloResponseDTO> findAll() {
-    return modeloRepository
-    .listAll()
-    .stream()
-    .map(e -> ModeloResponseDTO.valueOf(e)).toList();
-}
-
-
+    @Override
+    public List<ModeloResponseDTO> findAll() {
+        return modeloRepository
+                .listAll()
+                .stream()
+                .map(e -> ModeloResponseDTO.valueOf(e))
+                .toList();
+    }
 }

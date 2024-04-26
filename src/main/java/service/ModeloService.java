@@ -8,14 +8,14 @@ import java.util.List;
 
 public interface ModeloService {
 
-ModeloResponseDTO create(@Valid ModeloDTO dto);
+   ModeloResponseDTO create(@Valid ModeloDTO dto);
 
- void update(Long id, @Valid ModeloDTO dto);
+   void update(Long id, @Valid ModeloDTO dto);
 
- void delete(Long id);
+   void delete(Long id);
 
- ModeloResponseDTO findById(Long id);
+   ModeloResponseDTO findById(Long id);
 
- List<ModeloResponseDTO> findAll();
+   List<ModeloResponseDTO> findAll();
 }
 

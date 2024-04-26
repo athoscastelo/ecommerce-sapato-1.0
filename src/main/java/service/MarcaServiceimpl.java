@@ -28,34 +28,29 @@ public class MarcaServiceimpl implements MarcaService {
         return MarcaResponseDTO.valueOf(Marca);
     }
 
+    @Override
+    @Transactional
+    public void update(Long id, @Valid MarcaDTO dto) {
+        Marca Marca = MarcaRepository.findById(id);
+        Marca.setNome(dto.nome());
+    }
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        MarcaRepository.deleteById(id);
+    }
 
-@Override
-@Transactional
-public void update(Long id, @Valid MarcaDTO dto) {
-    Marca Marca = MarcaRepository.findById(id);
-    Marca.setNome(dto.nome());
-}
+    @Override
+    public MarcaResponseDTO findById(Long id) {
+        return MarcaResponseDTO.valueOf(MarcaRepository.findById(id));
+    }
 
-@Override
-@Transactional
-public void delete(Long id) {
-    MarcaRepository.deleteById(id);
-}
-
-
-
-@Override
-public MarcaResponseDTO findById(Long id) {
-    return MarcaResponseDTO.valueOf(MarcaRepository.findById(id));
-}
-
-
-@Override
-public List<MarcaResponseDTO> findAll() {
-    return MarcaRepository
-    .listAll()
-    .stream()
-    .map(e -> MarcaResponseDTO.valueOf(e)).toList();
-}
+    @Override
+    public List<MarcaResponseDTO> findAll() {
+        return MarcaRepository
+        .listAll()
+        .stream()
+        .map(e -> MarcaResponseDTO.valueOf(e)).toList();
+    }
 
 }

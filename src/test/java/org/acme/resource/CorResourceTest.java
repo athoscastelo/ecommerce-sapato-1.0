@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import jakarta.ws.rs.core.MediaType;
 import dto.CorDTO;
 import io.quarkus.test.junit.QuarkusTest;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;

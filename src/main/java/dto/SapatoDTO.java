@@ -16,6 +16,8 @@ public record SapatoDTO (
     @NotNull
     Long fornecedorId,
     @NotNull
+    Long tiposapato_id,
+    @NotNull
     Long marcaId,
     @NotNull
     Long corId,

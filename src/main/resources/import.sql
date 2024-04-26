@@ -45,3 +45,8 @@ VALUES ('Maria Oliveira', 'maria@example.com', 'senhaMaria', '987.654.321-09', '
 INSERT INTO Funcionario (nome, email, senha, cpf, dataNascimento, cargo, telefone, endereco)
 VALUES ('Pedro Santos', 'pedro@example.com', 'senhaPedro', '456.789.123-45', '1990-12-05', 'Analista Financeiro', '(33) 6543-2109', 'Rua das Oliveiras, 789');
 
+
+
+
+
+

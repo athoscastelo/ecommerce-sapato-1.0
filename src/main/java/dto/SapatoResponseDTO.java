@@ -15,7 +15,8 @@ public record SapatoResponseDTO (
     FornecedorResponseDTO fornecedor,
     MarcaResponseDTO marca,
     CorResponseDTO cor,
-    ModeloResponseDTO modelo
+    ModeloResponseDTO modelo,
+    TipoSapatoResponseDTO tiposapato
 ) { 
     public static SapatoResponseDTO valueOf(Sapato sapato) {
         return new SapatoResponseDTO(
@@ -28,11 +29,8 @@ public record SapatoResponseDTO (
             FornecedorResponseDTO.valueOf(sapato.getFornecedor()),
             MarcaResponseDTO.valueOf(sapato.getMarca()), 
             CorResponseDTO.valueOf(sapato.getCor()), 
-            ModeloResponseDTO.valueOf(sapato.getModelo()) 
+            ModeloResponseDTO.valueOf(sapato.getModelo()) ,
+            TipoSapatoResponseDTO.valueOf(sapato.getTiposapato())
         );
     }
 }
-
-
-
-

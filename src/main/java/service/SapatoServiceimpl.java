@@ -15,6 +15,7 @@ import repository.FornecedorRepository;
 import repository.MarcaRepository;
 import repository.ModeloRepository;
 import repository.SapatoRepository;
+import repository.TipoSapatoRepository;
 import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,6 +38,9 @@ public class SapatoServiceimpl implements SapatoService {
     @Inject
     private CorRepository corRepository;
 
+    @Inject
+    private TipoSapatoRepository tipoSapatoRepository;
+
     @Override
     @Transactional
     public SapatoResponseDTO create(@Valid SapatoDTO dto) {
@@ -50,6 +54,7 @@ public class SapatoServiceimpl implements SapatoService {
         Sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         Sapato.setCor(corRepository.findById(dto.corId()));
         Sapato.setModelo(modeloRepository.findById(dto.modeloId()));
+        Sapato.setTiposapato(tipoSapatoRepository.findById(dto.tiposapato_id()));
         SapatoRepository.persist(Sapato);
         return SapatoResponseDTO.valueOf(Sapato);
     }
@@ -70,8 +75,8 @@ public class SapatoServiceimpl implements SapatoService {
         Sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         Sapato.setCor(corRepository.findById(dto.corId()));
         Sapato.setModelo(modeloRepository.findById(dto.modeloId()));
+        Sapato.setTiposapato(tipoSapatoRepository.findById(dto.tiposapato_id()));
         SapatoRepository.persist(Sapato);
-
         }
     
     @Override

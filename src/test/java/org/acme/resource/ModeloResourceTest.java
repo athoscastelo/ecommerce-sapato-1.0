@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class ModeloResourceTest {
     @Test
     public void createTest(){
-        ModeloDTO dto = new ModeloDTO("bonito");
+        ModeloDTO dto = new ModeloDTO("Oxford");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
@@ -22,7 +22,7 @@ public class ModeloResourceTest {
         .post("/modelos")
         .then()
         .statusCode(201)
-        .body("nome", is("bonito"));
+        .body("nome", is("Oxford"));
     }
     @Test
     public void findAllTest(){
@@ -46,7 +46,7 @@ public class ModeloResourceTest {
 
     @Test
     public void updateTest(){
-        ModeloDTO dto = new ModeloDTO("Feio");
+        ModeloDTO dto = new ModeloDTO("Derby");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)

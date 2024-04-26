@@ -4,30 +4,41 @@ package org.acme.resource;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.Test;
-import dto.FornecedorDTO;
+import dto.FuncionarioDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-public class FornecedorResourceTest {
+public class FuncionarioResourceTest {
     @Test
     public void createTest(){
-        FornecedorDTO dto = new FornecedorDTO("Athos", "1234", "quadra 2", "0000");
+        FuncionarioDTO dto = new FuncionarioDTO("Athos", "athos@gmail.com", "xxx", "12345 x", "quadra x","27/07/1997", "empacotador", "xxx");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .post("/fornecedores")
+        .post("/funcionarios")
         .then()
         .statusCode(201)
         .body("nome", is("Athos"));
+
+        FuncionarioDTO dto1 = new FuncionarioDTO("Marcelo", "marcelo@gmail.com", "xxx", "12345", "quadra x","27/12/2006", "recepcionista", "yyy");
+
+        given()
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(dto1)
+        .when()
+        .post("/funcionarios")
+        .then()
+        .statusCode(201)
+        .body("nome", is("Marcelo"));
     }
     @Test
     public void findAllTest(){
         given()
         .when()
-        .get("/fornecedores")
+        .get("/funcionarios")
         .then()
         .statusCode(200)
         .body("id", hasItem(is(1)));;
@@ -37,7 +48,7 @@ public class FornecedorResourceTest {
     public void findByIdTest(){
         given()
         .when()
-        .get("/fornecedores/1")
+        .get("/funcionarios/1")
         .then()
         .statusCode(200)
         .body("id", is(1));
@@ -45,13 +56,13 @@ public class FornecedorResourceTest {
 
     @Test
     public void updateTest(){
-        FornecedorDTO dto = new FornecedorDTO("Gabriela", "12345", "quadra 3", "9999");
+        FuncionarioDTO dto = new FuncionarioDTO("Pedro", "pedro@gmail.com", "xxx", "12345", "quadra x","27/12/2006", "atendente", "zzz");
 
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/fornecedores/2")
+        .put("/funcionarios/2")
         .then()
         .statusCode(204);
     }
@@ -61,7 +72,7 @@ public class FornecedorResourceTest {
         given()
         .when()
         .pathParam("id", 1)
-        .delete("/fornecedores/{id}")
+        .delete("/funcionarios/{id}")
         .then()
         .statusCode(204);
     }

@@ -1,34 +1,43 @@
 
 package org.acme.resource;
 
-import org.junit.jupiter.api.Test;
-import jakarta.ws.rs.core.MediaType;
-import dto.MarcaDTO;
-import io.quarkus.test.junit.QuarkusTest;
-
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
+import org.junit.jupiter.api.Test;
+import dto.ClienteDTO;
+import io.quarkus.test.junit.QuarkusTest;
+import jakarta.ws.rs.core.MediaType;
+import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-public class MarcaResourceTest {
+public class ClienteResourceTest {
     @Test
     public void createTest(){
-        MarcaDTO dto = new MarcaDTO("Hugo Boss");
+        ClienteDTO dto = new ClienteDTO("Athos", "athos@gmail.com", "xxx", "12345", "27/07/1997");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .post("/marcas")
+        .post("/clientes")
         .then()
         .statusCode(201)
-        .body("nome", is("Hugo Boss"));
+        .body("nome", is("Athos"));
+
+        ClienteDTO dto1 = new ClienteDTO("Marcelo", "marcelo@gmail.com", "xxx", "123456", "27/12/2003");
+        given()
+        .contentType(MediaType.APPLICATION_JSON)
+        .body(dto1)
+        .when()
+        .post("/clientes")
+        .then()
+        .statusCode(201)
+        .body("nome", is("Marcelo"));
     }
     @Test
     public void findAllTest(){
         given()
         .when()
-        .get("/marcas")
+        .get("/clientes")
         .then()
         .statusCode(200)
         .body("id", hasItem(is(1)));;
@@ -38,21 +47,20 @@ public class MarcaResourceTest {
     public void findByIdTest(){
         given()
         .when()
-        .get("/marcas/1")
+        .get("/clientes/1")
         .then()
         .statusCode(200)
         .body("id", is(1));
     }
 
-    
     @Test
     public void updateTest(){
-        MarcaDTO dto = new MarcaDTO("Gucci");
+        ClienteDTO dto = new ClienteDTO("Pedro", "pedro@gmail.com", "xxx", "1234", "20/03/2000");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/marcas/2")
+        .put("/clientes/2")
         .then()
         .statusCode(204);
     }
@@ -62,14 +70,8 @@ public class MarcaResourceTest {
         given()
         .when()
         .pathParam("id", 1)
-        .delete("/marcas/{id}")
+        .delete("/clientes/{id}")
         .then()
         .statusCode(204);
     }
 }
-
-
-    
-    
-
-

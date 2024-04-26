@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class TipoSapatoResourceTest {
     @Test
     public void createTest(){
-        TipoSapatoDTO dto = new TipoSapatoDTO("bonito");
+        TipoSapatoDTO dto = new TipoSapatoDTO("Casual");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
@@ -22,9 +22,9 @@ public class TipoSapatoResourceTest {
         .post("/tiposapatos")
         .then()
         .statusCode(201)
-        .body("descricao", is("bonito"));
+        .body("descricao", is("Casual"));
 
-        TipoSapatoDTO dto1 = new TipoSapatoDTO("social");
+        TipoSapatoDTO dto1 = new TipoSapatoDTO("Social");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto1)
@@ -32,7 +32,7 @@ public class TipoSapatoResourceTest {
         .post("/tiposapatos")
         .then()
         .statusCode(201)
-        .body("descricao", is("social"));
+        .body("descricao", is("Social"));
     }
     @Test
     public void findAllTest(){
@@ -56,7 +56,7 @@ public class TipoSapatoResourceTest {
 
     @Test
     public void updateTest(){
-        TipoSapatoDTO dto = new TipoSapatoDTO("Feio");
+        TipoSapatoDTO dto = new TipoSapatoDTO("Social/Casual");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)

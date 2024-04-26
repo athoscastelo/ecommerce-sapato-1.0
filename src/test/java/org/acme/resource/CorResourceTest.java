@@ -14,7 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class CorResourceTest {
     @Test
     public void createTest(){
-        CorDTO dto = new CorDTO("bonito");
+        CorDTO dto = new CorDTO("Bege");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
@@ -22,7 +22,7 @@ public class CorResourceTest {
         .post("/cores")
         .then()
         .statusCode(201)
-        .body("nome", is("bonito"));
+        .body("nome", is("Bege"));
     }
     @Test
     public void findAllTest(){
@@ -46,7 +46,7 @@ public class CorResourceTest {
 
     @Test
     public void updateTest(){
-        CorDTO dto = new CorDTO("Feio");
+        CorDTO dto = new CorDTO("Vinho");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)

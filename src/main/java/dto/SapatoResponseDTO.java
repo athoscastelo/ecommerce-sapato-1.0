@@ -1,6 +1,8 @@
 package dto;
 
 import model.Sapato;
+import model.CorCadarco;
+import model.MaterialSapato;
 import model.Numeracao;
 
 public record SapatoResponseDTO (
@@ -8,6 +10,8 @@ public record SapatoResponseDTO (
     Double preco,
     Integer estoque,
     Numeracao numeracao,
+    MaterialSapato materialsapato,
+    CorCadarco cadarco,
     FornecedorResponseDTO fornecedor,
     MarcaResponseDTO marca,
     CorResponseDTO cor,
@@ -19,6 +23,8 @@ public record SapatoResponseDTO (
             sapato.getPreco(),        
             sapato.getEstoque(),      
             sapato.getNumeracao(),
+            sapato.getMaterialSapato(),
+            sapato.getCadarco(),
             FornecedorResponseDTO.valueOf(sapato.getFornecedor()),
             MarcaResponseDTO.valueOf(sapato.getMarca()), 
             CorResponseDTO.valueOf(sapato.getCor()), 

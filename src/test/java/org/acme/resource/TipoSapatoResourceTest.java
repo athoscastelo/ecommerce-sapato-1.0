@@ -1,71 +1,69 @@
 
 package org.acme.resource;
 
-import static org.hamcrest.CoreMatchers.is;
 import org.junit.jupiter.api.Test;
-import dto.SapatoDTO;
-import io.quarkus.test.junit.QuarkusTest;
 import jakarta.ws.rs.core.MediaType;
+import dto.TipoSapatoDTO;
+import io.quarkus.test.junit.QuarkusTest;
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class SapatoResourceTest {
-
-    
+public class TipoSapatoResourceTest {
     @Test
     public void createTest(){
-        SapatoDTO dto = new SapatoDTO(11.0, 111, 39,1,2, 1L,1L,1L,1L);
+        TipoSapatoDTO dto = new TipoSapatoDTO("bonito");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .post("/sapatos")
+        .post("/tiposapatos")
         .then()
         .statusCode(201)
-        .body("id", is(1));
+        .body("descricao", is("bonito"));
 
-        SapatoDTO dto1 = new SapatoDTO(11.0, 111, 40,1,2, 1L,1L,1L,1L);
+        TipoSapatoDTO dto1 = new TipoSapatoDTO("social");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto1)
         .when()
-        .post("/sapatos")
+        .post("/tiposapatos")
         .then()
         .statusCode(201)
-        .body("id", is(2));
+        .body("descricao", is("social"));
     }
-
     @Test
     public void findAllTest(){
         given()
         .when()
-        .get("/sapatos")
+        .get("/tiposapatos")
         .then()
-        .statusCode(200);
+        .statusCode(200)
+        .body("id", hasItem(is(1)));;
     }
 
     @Test
     public void findByIdTest(){
         given()
         .when()
-        .get("/sapatos/1")
+        .get("/tiposapatos/1")
         .then()
-        .statusCode(200);
+        .statusCode(200)
+        .body("id", is(1));
     }
 
- 
     @Test
     public void updateTest(){
-        SapatoDTO dto = new SapatoDTO(67.0, 34, 38,1,1, 1L,1L,1L,1L);
-
+        TipoSapatoDTO dto = new TipoSapatoDTO("Feio");
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .body(dto)
         .when()
-        .put("/sapatos/2")
+        .put("/tiposapatos/1")
         .then()
-        .statusCode(204)
-        .body("id", is(2));
+        .statusCode(204);
     }
 
     @Test
@@ -73,13 +71,8 @@ public class SapatoResourceTest {
         given()
         .when()
         .pathParam("id", 2)
-        .delete("/sapatos/{id}")
+        .delete("/tiposapatos/{id}")
         .then()
         .statusCode(204);
     }
-
-
 }
-
-
-

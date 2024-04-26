@@ -6,6 +6,8 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import model.CorCadarco;
+import model.MaterialSapato;
 import model.Numeracao;
 import model.Sapato;
 import repository.CorRepository;
@@ -42,6 +44,8 @@ public class SapatoServiceimpl implements SapatoService {
         Sapato.setPreco(dto.preco());
         Sapato.setEstoque(dto.estoque());
         Sapato.setNumeracao(Numeracao.valueOf(dto.valor_numeracao()));
+        Sapato.setMaterialSapato(MaterialSapato.valueOf(dto.materialsapato_id()));
+        Sapato.setCadarco(CorCadarco.valueOf(dto.cadarco_id()));
         Sapato.setFornecedor(fornecedorRepository.findById(dto.fornecedorId()));
         Sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         Sapato.setCor(corRepository.findById(dto.corId()));
@@ -60,6 +64,8 @@ public class SapatoServiceimpl implements SapatoService {
         Sapato.setPreco(dto.preco());
         Sapato.setEstoque(dto.estoque());
         Sapato.setNumeracao(Numeracao.valueOf(dto.valor_numeracao()));
+        Sapato.setMaterialSapato(MaterialSapato.valueOf(dto.materialsapato_id()));
+        Sapato.setCadarco(CorCadarco.valueOf(dto.cadarco_id()));
         Sapato.setFornecedor(fornecedorRepository.findById(dto.fornecedorId()));
         Sapato.setMarca(marcaRepository.findById(dto.marcaId()));
         Sapato.setCor(corRepository.findById(dto.corId()));

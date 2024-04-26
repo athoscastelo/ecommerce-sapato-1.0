@@ -41,8 +41,8 @@ INSERT INTO Modelo (nome) VALUES ('Modelo D');
 INSERT INTO Modelo (nome) VALUES ('Modelo E');
 INSERT INTO Modelo (nome) VALUES ('Modelo F');
 
-
--- Inserts para a classe Sapato
-INSERT INTO Sapato ( preco, estoque, numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES ( 99.99, 37, 1, 1, 1, 1, 1);
-INSERT INTO Sapato ( preco, estoque, numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES ( 79.99, 39, 2, 2, 2, 2, 2);
-INSERT INTO Sapato ( preco, estoque, numeracao_id, fornecedor_id, marca_id, cor_id, modelo_id) VALUES ( 129.99, 38, 3, 3, 3, 3, 3);
+INSERT INTO TipoSapato (descricao) VALUES ('Sapato social');
+INSERT INTO TipoSapato (descricao) VALUES ('Sapato esportivo masculino');
+INSERT INTO TipoSapato (descricao) VALUES ('Sapato de salto alto feminino');
+INSERT INTO TipoSapato (descricao) VALUES ('Sapato casual para o dia a dia, confortável e elegante');
+INSERT INTO TipoSapato (descricao) VALUES ('Sapato de dança ');

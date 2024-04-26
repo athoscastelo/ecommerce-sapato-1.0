@@ -14,23 +14,15 @@ public class Sapato extends DefaultEntity {
 
     private Integer estoque;
     
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public Integer getEstoque() {
-        return estoque;
-    }
-
-    public void setEstoque(Integer estoque) {
-        this.estoque = estoque;
-    }
-
     private Numeracao numeracao;
+
+    private MaterialSapato materialSapato;
+
+    private CorCadarco cadarco;
+
+    @ManyToOne
+    @JoinColumn(name = "tiposapato_id")
+    private TipoSapato tiposapato;
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
@@ -47,6 +39,47 @@ public class Sapato extends DefaultEntity {
     @ManyToOne
     @JoinColumn(name = "modelo_id")
     private Modelo modelo;
+
+
+    public CorCadarco getCadarco() {
+        return cadarco;
+    }
+
+    public void setCadarco(CorCadarco cadarco) {
+        this.cadarco = cadarco;
+    }
+    
+    public MaterialSapato getMaterialSapato() {
+        return materialSapato;
+    }
+
+    public void setMaterialSapato(MaterialSapato materialSapato) {
+        this.materialSapato = materialSapato;
+    }
+
+    public TipoSapato getTiposapato() {
+        return tiposapato;
+    }
+
+    public void setTiposapato(TipoSapato tiposapato) {
+        this.tiposapato = tiposapato;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public Integer getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
+    }
 
     public Numeracao getNumeracao() {
         return numeracao;

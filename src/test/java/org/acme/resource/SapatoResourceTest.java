@@ -49,6 +49,8 @@ public class SapatoResourceTest {
             .then()
             .statusCode(201)
             .body("id", is(2));
+
+            //create e delete funcionam testando somente o create depois de executar o teste da classe inteira
     }
 
     @Test

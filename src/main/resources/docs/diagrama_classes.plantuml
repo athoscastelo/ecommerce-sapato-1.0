@@ -1,0 +1,142 @@
+
+@startuml ecommerce
+
+      class Usuario {
+    - email: String
+    - senha: String
+}
+class Pessoa {
+    - nome: String
+    - cpf: String
+    - dataNascimento: String
+    - telefone: String
+    - endereco: String
+}
+
+class Funcionario {
+    - cargo: String
+
+}
+
+class Cliente {
+    - listaPedidos: List<Pedido>
+    - listaFavoritos: List<Sapato>
+}
+ 
+    class TipoSapato {
+        - descricao: String
+
+    }
+
+    class Sapato {
+        - preco: Double
+        - estoque: Integer
+        - numeracao: Numeracao
+        - materialSapato: MaterialSapato
+        - cadarco: CorCadarco
+        - tiposapato: TipoSapato
+        - fornecedor: Fornecedor
+        - marca: Marca
+        - cor: Cor
+        - modelo: Modelo
+    }
+
+    enum Numeracao {
+        TRINTA_QUATRO
+        TRINTA_CINCO
+        TRINTA_SEIS
+        TRINTA_SETE
+        TRINTA_OITO
+        TRINTA_NOVE
+        QUARENTA
+        QUARENTA_UM
+        QUARENTA_DOIS
+        QUARENTA_TRES
+        QUARENTA_QUATRO
+        QUARENTA_CINCO
+    }
+
+    class Modelo {
+        - nome: String
+    }
+
+    enum MaterialSapato {
+        COURO
+        CAMURÇA
+        TECIDO
+    }
+
+    class Marca {
+        - nome: String
+    }
+
+    class Fornecedor {
+        - nome: String
+        - cnpj: String
+        - endereco: String
+        - telefone: String
+    }
+
+    enum CorCadarco {
+        BEGE
+        BRANCO
+        PRETO
+        CINZA
+        MARROM
+    }
+
+    class Cor {
+        - nome: String
+    }
+
+    Class Pedido { 
+        - codigo: int 
+        - pagamento: Pagamento
+        - data: LocalDateTime
+        - StatusPedido: status
+        - valorcompra: Double
+        - 
+
+        }
+
+    enum StatusPedido {
+        - PAGO: int
+        - PEDIDOS_SEPARACAO: int
+        - PAGAMENTO_PENDENTE: int
+        - ENVIADO: int
+        - CONCLUIDO: int
+        - CANCELADO: int
+    }
+
+    Class Pagamento {
+        - valorcompra: Double
+        - formapagamento: String 
+        - clienteid: Long
+        - pedidoid: Long
+
+    }
+    Class Item {
+        - preco: Double
+        - desconto: Double
+        - quantidade: Integer
+    }
+    
+    
+TipoSapato "1" --> "0..*" Sapato
+Fornecedor "1" --> "0..*" Sapato
+Marca "1" --> "0..*" Sapato
+Cor "1" --> "0..*" Sapato
+Modelo "1" --> "0..*" Sapato
+Sapato "*"--> Numeracao
+Sapato "*"--> MaterialSapato
+Sapato "*"--> CorCadarco
+Cliente "1" --> "1" Pessoa
+Funcionario "1" --> "1" Pessoa
+Pessoa "1" --> "1" Usuario
+Cliente "1" --> "*" Pedido
+Sapato "1" --> "1" Item
+Pedido "1" --> "1" Pagamento
+Pedido "1" --> "1" StatusPedido
+Pedido "1" *--> "*" Item 
+@enduml
+

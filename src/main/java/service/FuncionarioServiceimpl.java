@@ -6,8 +6,12 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import model.Cliente;
 import model.Funcionario;
+import model.Usuario;
+import repository.ClienteRepository;
 import repository.FuncionarioRepository;
+import repository.UsuarioRepository;
 import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,23 +22,43 @@ public class FuncionarioServiceimpl implements FuncionarioService {
     @Inject
     private FuncionarioRepository FuncionarioRepository;
 
+    @Inject
+    private UsuarioRepository usuarioRepository;
+
+    @Inject
+    private ClienteRepository clienteRepository;
+
     @Override
     @Transactional
     public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
-        Funcionario Funcionario = new Funcionario();
-        Funcionario.setNome(dto.nome());
-        Funcionario.setCpf(dto.cpf());
-        Funcionario.setEmail(dto.email());
-        Funcionario.setSenha(dto.senha());
-        Funcionario.setDataNascimento(dto.datanascimento());
-        Funcionario.setCargo(dto.cargo());
-        Funcionario.setTelefone(dto.telefone());;
-        Funcionario.setEndereco(dto.endereco());
 
-        FuncionarioRepository.persist(Funcionario);
-        return FuncionarioResponseDTO.valueOf(Funcionario);
+        Usuario usuario = new Usuario();
+        usuario.setEmail(dto.email());
+        usuario.setSenha(dto.senha());
+
+        // salvando o usuario
+        usuarioRepository.persist(usuario);
+      
+        Cliente cliente = new Cliente();
+        cliente.setNome(dto.nome());
+        cliente.setEndereco(dto.endereco());
+        cliente.setTelefone(dto.telefone());
+        cliente.setDataNascimento(dto.datanascimento());
+        cliente.setUsuario(usuario);
+        cliente.setCpf(dto.cpf());
+
+        // salvando pessoa fisica
+        clienteRepository.persist(cliente);
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCargo(dto.cargo());
+        funcionario.setClientef(cliente);
+        // salvando o funcionario
+        FuncionarioRepository.persist(funcionario);
+
+        return FuncionarioResponseDTO.valueOf(funcionario);
     }
-    
+
     @Override
     @Transactional
     public void update(Long id, @Valid FuncionarioDTO dto) {
@@ -43,14 +67,23 @@ public class FuncionarioServiceimpl implements FuncionarioService {
             throw new IllegalArgumentException("Funcionario não encontrado com o ID: " + id);
 
         }
-        Funcionario.setNome(dto.nome());
-        Funcionario.setCpf(dto.cpf());
-        Funcionario.setEmail(dto.email());
-        Funcionario.setSenha(dto.senha());
-        Funcionario.setDataNascimento(dto.datanascimento());
-        Funcionario.setCargo(dto.cargo());
-        Funcionario.setTelefone(dto.telefone());;
-        Funcionario.setEndereco(dto.endereco());
+
+        Usuario usuario = new Usuario();
+        usuario.setEmail(dto.email());
+        usuario.setSenha(dto.senha());
+      
+        Cliente cliente = new Cliente();
+        cliente.setNome(dto.nome());
+        cliente.setEndereco(dto.endereco());
+        cliente.setTelefone(dto.telefone());
+        cliente.setDataNascimento(dto.datanascimento());
+        cliente.setUsuario(usuario);
+        cliente.setCpf(dto.cpf());
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCargo(dto.cargo());
+        funcionario.setClientef(cliente);
+
             
         }
     

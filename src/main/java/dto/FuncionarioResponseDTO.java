@@ -5,25 +5,26 @@ import model.Funcionario;
 public record FuncionarioResponseDTO (
     Long id,
     String nome,
-    String email,
-    String senha,
     String cpf,
     String datanascimento,
     String cargo,
     String endereco,
-    String telefone
+    String telefone,
+    String email,
+    String senha
 ) {
     public static FuncionarioResponseDTO valueOf(Funcionario funcionario) {
         return new FuncionarioResponseDTO(
             funcionario.getId(),
-            funcionario.getNome(),
-            funcionario.getCpf(),
-            funcionario.getEmail(),
-            funcionario.getSenha(),
-            funcionario.getDataNascimento(),
+            funcionario.getClientef().getNome(),
+            funcionario.getClientef().getCpf(),
+            funcionario.getClientef().getDataNascimento(),
             funcionario.getCargo(),
-            funcionario.getEndereco(),
-            funcionario.getTelefone()
+            funcionario.getClientef().getEndereco(),
+            funcionario.getClientef().getTelefone(),
+            funcionario.getClientef().getUsuario().getEmail(),
+            funcionario.getClientef().getUsuario().getSenha()
+
 
         );
     }

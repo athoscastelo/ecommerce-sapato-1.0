@@ -18,4 +18,7 @@ public interface ClienteService  {
     ClienteResponseDTO findById(Long id);
 
     List<ClienteResponseDTO> findAll();
+
+    public List<ClienteResponseDTO> findByNome(String nome);
+
 }

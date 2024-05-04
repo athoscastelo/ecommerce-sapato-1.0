@@ -1,7 +1,12 @@
 package model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 
-public class Usuario  {
+@Entity
+public class Usuario extends DefaultEntity  {
+
+    @Column(unique = true)
     private String email;
     private String senha;
 

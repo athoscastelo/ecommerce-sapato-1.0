@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 @Entity
 public class Pedido extends DefaultEntity {
     
+    
     private Pagamento pagamento;
     private LocalDateTime data;
     private StatusPedido status;

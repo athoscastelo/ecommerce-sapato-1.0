@@ -9,6 +9,7 @@ import jakarta.persistence.InheritanceType;
 
 public class Pessoa extends DefaultEntity {
    
+    
     private String nome;
     private String dataNascimento;
     private String telefone;

@@ -19,6 +19,4 @@ public interface ClienteService  {
 
     List<ClienteResponseDTO> findAll();
 
-    public List<ClienteResponseDTO> findByNome(String nome);
-
 }

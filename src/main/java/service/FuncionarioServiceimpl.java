@@ -2,6 +2,7 @@ package service;
 
 import dto.FuncionarioDTO;
 import dto.FuncionarioResponseDTO;
+import dto.UsuarioResponseDTO;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -28,15 +29,19 @@ public class FuncionarioServiceimpl implements FuncionarioService {
     @Inject
     private ClienteRepository clienteRepository;
 
+    @Inject
+    public HashService hashService;
+
     @Override
     @Transactional
     public FuncionarioResponseDTO create(@Valid FuncionarioDTO dto) {
 
+
         Usuario usuario = new Usuario();
         usuario.setEmail(dto.email());
-        usuario.setSenha(dto.senha());
+        // gerando o hash da senha
+        usuario.setSenha(hashService.getHashSenha(dto.senha()));
 
-        // salvando o usuario
         usuarioRepository.persist(usuario);
       
         Cliente cliente = new Cliente();
@@ -110,6 +115,12 @@ public class FuncionarioServiceimpl implements FuncionarioService {
         return Funcionarios.stream()
                 .map(FuncionarioResponseDTO::valueOf)
                 .collect(Collectors.toList());
+    }
+
+    public UsuarioResponseDTO login (String email, String senha) {
+
+        Funcionario funcionario = FuncionarioRepository.findByEmailAndSenha(email, senha);
+        return  UsuarioResponseDTO.valueOf(funcionario.getClientef());
     }
 }
 

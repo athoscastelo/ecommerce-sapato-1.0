@@ -16,14 +16,22 @@ public class ClienteServiceimpl implements ClienteService {
     @Inject
     public ClienteRepository clienteRepository;
 
+
     @Override
     @Transactional
     public ClienteResponseDTO create(@Valid ClienteDTO dto) {
+        
         Cliente cliente = new Cliente();
+        cliente.setNome(dto.nome());
+        cliente.setEndereco(dto.endereco());
+        cliente.setTelefone(dto.telefone());
+        cliente.setDataNascimento(dto.datanascimento());
         cliente.setCpf(dto.cpf());
 
         clienteRepository.persist(cliente);
+    
         return ClienteResponseDTO.valueOf(cliente);
+
     }
 
     @Override
@@ -31,6 +39,10 @@ public class ClienteServiceimpl implements ClienteService {
     public void update(Long id, ClienteDTO dto) {
         Cliente cliente =  clienteRepository.findById(id);
 
+        cliente.setNome(dto.nome());
+        cliente.setEndereco(dto.endereco());
+        cliente.setTelefone(dto.telefone());
+        cliente.setDataNascimento(dto.datanascimento());
         cliente.setCpf(dto.cpf());
 
         }
@@ -54,9 +66,4 @@ public class ClienteServiceimpl implements ClienteService {
         .map(e -> ClienteResponseDTO.valueOf(e)).toList();
     }
 
-    @Override
-    public List<ClienteResponseDTO> findByNome(String nome) {
-        return clienteRepository.findByNome(nome).stream()
-        .map(e -> ClienteResponseDTO.valueOf(e)).toList();
-    }
 }

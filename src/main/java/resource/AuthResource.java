@@ -1,6 +1,7 @@
 package resource;
 
-import dto.FuncionarioDTO;
+
+import dto.UsuarioResponseDTO;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -31,36 +32,26 @@ public class AuthResource {
 
     @Inject
     public JwtService jwtService;
-    
-    @GET
-    @Path("/{id}")
-    public Response findById(@PathParam("id") Long id) {
-        return Response.ok(FuncionarioService.findById(id)).build();
-    }
-
-    @GET
-    public Response findAll() {
-        return Response.ok(FuncionarioService.findAll()).build();
-    }
-
-    @POST
-    public Response create(FuncionarioDTO dto) {
-        return Response.status(Status.CREATED).entity(FuncionarioService.create(dto)).build();
-    }
 
 
-    @PUT
-    @Path("/{id}")
-    public Response update(@PathParam("id") Long id, FuncionarioDTO dto) {
-        FuncionarioService.update(id, dto);
-        return Response.status(Status.NO_CONTENT).build();
-    }
 
-    @DELETE
-    @Path("/{id}")
-    public Response delete(@PathParam("id") Long id) {
-        FuncionarioService.delete(id);
-        return Response.status(Status.NO_CONTENT).build();
+    public Response login (String email, String senha) {
+
+        String hash = hashService.getHashSenha(dto.senha());
+
+        UsuarioResponseDTO usuario = null;
+
+        if (dto.email() == 1){
+            FuncionarioService.login(dto.email(), hash);
+        } else if (dto.email() == 2) {
+            return Response.status(Status.NOT_FOUND).build();
+
+        } else {
+            return Response.status(Status.NOT_FOUND).build();
+        }
+        return  Response.ok(usuario)
+        .header("Authorization", jwtService.generateJwt(usuario))
+        .build();
     }
 }
 

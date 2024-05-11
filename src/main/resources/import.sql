@@ -48,7 +48,7 @@ VALUES ('Pedro Santos', 'pedro@example.com', 'senhaPedro', '456.789.123-45', '19
 INSERT INTO Sapatos (preco, estoque, valor_numeracao, materialsapato_id, cadarco_id, fornecedor_id, tiposapato_id, marca_id, cor_id, modelo_id)
 VALUES (67.0, 34, 41, 2, 2, 1, 2, 2, 3, 1);
 
-
+insert into usuario (email, senha) values ('athos', 'inwfjfewffnu3f');
 
 
 

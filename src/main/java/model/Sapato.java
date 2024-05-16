@@ -24,7 +24,7 @@ public class Sapato extends DefaultEntity {
     private CorCadarco cadarco;
 
 
-    @ManyToMany(mappedBy = "sapatosFavoritos")
+    @ManyToMany(mappedBy = "favoritos")
     private List<Cliente> clientesFavoritando;
 
     @ManyToOne

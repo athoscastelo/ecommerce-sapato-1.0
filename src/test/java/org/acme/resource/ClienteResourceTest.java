@@ -1,7 +1,6 @@
 package org.acme.resource;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasItem;
 import org.junit.jupiter.api.Test;
 import dto.ClienteDTO;
 import io.quarkus.test.junit.QuarkusTest;

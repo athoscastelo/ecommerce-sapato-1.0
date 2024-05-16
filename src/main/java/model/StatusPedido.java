@@ -28,11 +28,11 @@ public enum StatusPedido {
     }
 
     public static StatusPedido valueOf(int id) {
-        for (StatusPedido status : values()) {
-            if (status.getId() == id) {
-                return status;
+        for (StatusPedido statuspedido : values()) {
+            if (statuspedido.getId() == id) {
+                return statuspedido;
             }
         }
-        throw new IllegalArgumentException("ID de status inválido: " + id);
+        throw new IllegalArgumentException("id de status inválido: " + id);
     }
 }

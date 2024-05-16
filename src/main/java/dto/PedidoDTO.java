@@ -2,14 +2,12 @@ package dto;
 
 import java.time.LocalDateTime;
 
-import model.Pagamento;
-import model.StatusPedido;
 
 public record PedidoDTO(
-    Pagamento pagamento,
+    Double valorcompra,
+    String formapagamento,
     LocalDateTime data,
-    StatusPedido status,
-    Double valorcompra
+    Integer statusId
 ) {
     
     

@@ -1,16 +1,20 @@
 package model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pagamento extends DefaultEntity {
 
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
     private Double valorcompra;
     private String formapagamento;
-    private Long clienteid;
-    private Long pedidoid;
-    
+
     public Double getValorcompra() {
         return valorcompra;
     }
@@ -23,17 +27,6 @@ public class Pagamento extends DefaultEntity {
     public void setFormapagamento(String formapagamento) {
         this.formapagamento = formapagamento;
     }
-    public Long getClienteid() {
-        return clienteid;
-    }
-    public void setClienteid(Long clienteid) {
-        this.clienteid = clienteid;
-    }
-    public Long getPedidoid() {
-        return pedidoid;
-    }
-    public void setPedidoid(Long pedidoid) {
-        this.pedidoid = pedidoid;
-    }
-    
+
+
 }

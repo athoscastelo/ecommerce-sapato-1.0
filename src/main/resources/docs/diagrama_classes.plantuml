@@ -94,7 +94,6 @@ class Cliente {
         - pagamento: Pagamento
         - data: LocalDateTime
         - StatusPedido: status
-        - valorcompra: Double
         - 
 
         }
@@ -111,9 +110,6 @@ class Cliente {
     Class Pagamento {
         - valorcompra: Double
         - formapagamento: String 
-        - clienteid: Long
-        - pedidoid: Long
-
     }
     Class Item {
         - preco: Double

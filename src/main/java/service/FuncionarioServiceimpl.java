@@ -49,10 +49,9 @@ public class FuncionarioServiceimpl implements FuncionarioService {
         cliente.setEndereco(dto.endereco());
         cliente.setTelefone(dto.telefone());
         cliente.setDataNascimento(dto.datanascimento());
-        cliente.setUsuario(usuario);
         cliente.setCpf(dto.cpf());
+        cliente.setUsuario(usuario);
 
-        // salvando pessoa fisica
         clienteRepository.persist(cliente);
 
         Funcionario funcionario = new Funcionario();
@@ -82,8 +81,9 @@ public class FuncionarioServiceimpl implements FuncionarioService {
         cliente.setEndereco(dto.endereco());
         cliente.setTelefone(dto.telefone());
         cliente.setDataNascimento(dto.datanascimento());
-        cliente.setUsuario(usuario);
         cliente.setCpf(dto.cpf());
+
+        cliente.setUsuario(usuario);
 
         Funcionario funcionario = new Funcionario();
         funcionario.setCargo(dto.cargo());

@@ -6,7 +6,6 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public class Pessoa extends DefaultEntity {
    
     
@@ -14,8 +13,14 @@ public class Pessoa extends DefaultEntity {
     private String dataNascimento;
     private String telefone;
     private String endereco;
+    private String cpf;
     
-
+    public String getCpf() {
+        return cpf;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
     public String getNome() {
         return nome;
     }

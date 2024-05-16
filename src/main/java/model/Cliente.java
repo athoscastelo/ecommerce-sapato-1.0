@@ -1,9 +1,14 @@
 package model;
 
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 
@@ -11,20 +16,22 @@ import jakarta.persistence.OneToOne;
 public class Cliente extends Pessoa {
     
 
-    private String cpf;
+    
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+
+    @ManyToMany
+    @JoinTable(
+        name = "sapatos_favoritos",
+        joinColumns = @JoinColumn(name = "cliente_id"),
+        inverseJoinColumns = @JoinColumn(name = "sapato_id")
+    )
+    private List<Sapato> favoritos;
 
     @OneToOne
     @JoinColumn(name = "id_usuario", unique = true)
     private Usuario usuario;
 
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public Usuario getUsuario() {
         return usuario;

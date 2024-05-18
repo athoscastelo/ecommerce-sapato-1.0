@@ -1,11 +1,8 @@
 package model;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -22,10 +19,6 @@ public class Sapato extends DefaultEntity {
     private MaterialSapato materialSapato;
 
     private CorCadarco cadarco;
-
-
-    @ManyToMany(mappedBy = "favoritos")
-    private List<Cliente> clientesFavoritando;
 
     @ManyToOne
     @JoinColumn(name = "tiposapato_id")

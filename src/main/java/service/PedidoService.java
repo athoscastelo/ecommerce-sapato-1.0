@@ -17,4 +17,6 @@ public interface PedidoService {
     PedidoResponseDTO findById(Long id);
 
     List<PedidoResponseDTO> findAll();
+
+    List<PedidoResponseDTO> findByCliente (Long id);
 }

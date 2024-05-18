@@ -12,6 +12,7 @@ import model.StatusPedido;
 import repository.PagamentoRepository;
 import repository.PedidoRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @ApplicationScoped
@@ -78,6 +79,15 @@ public class PedidoServiceimpl implements PedidoService {
         .listAll()
         .stream()
         .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    }
+
+      @Override
+    public List<PedidoResponseDTO> findByCliente(Long id) {
+        
+        List<Pedido> pedidos = (List<Pedido>) pedidoRepository.findByCliente(id);
+        return pedidos.stream()
+                .map(PedidoResponseDTO::valueOf)
+                .collect(Collectors.toList());
     }
     
     

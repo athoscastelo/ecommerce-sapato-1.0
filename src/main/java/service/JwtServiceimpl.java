@@ -20,7 +20,7 @@ public class JwtServiceimpl implements JwtService {
         Instant expiryDate = now.plus(EXPIRATION_TIME);
 
         Set<String> roles = new HashSet<String>();
-        roles.add("Psicologo");
+        roles.add("Funcionário");
 
         return Jwt.issuer("unitins-jwt")
             .subject(dto.email())

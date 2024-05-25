@@ -12,7 +12,14 @@ public class Funcionario extends DefaultEntity {
     @OneToOne
     @JoinColumn(name = "id_cliente", unique = true)
     private Cliente clientef;
+    private String nomeImagem;
     
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
     public Cliente getClientef() {
         return clientef;
     }

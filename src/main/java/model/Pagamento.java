@@ -1,23 +1,10 @@
 package model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pagamento extends DefaultEntity {
 
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id")
-    private Pedido pedido;
-    public Pedido getPedido() {
-        return pedido;
-    }
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
     private Double valorcompra;
     private String formapagamento;
 

@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import model.Pedido;
-import model.Sapato;
 
 public record ClienteDTO(
     @NotBlank(message = "O nome não pode ser nulo ou vazio")

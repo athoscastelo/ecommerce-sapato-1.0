@@ -18,7 +18,8 @@ public record FuncionarioDTO(
     @NotNull
     String cargo,
     String email,
-    String senha
+    String senha,
+    String nomeImagem
 
 ) {
  }

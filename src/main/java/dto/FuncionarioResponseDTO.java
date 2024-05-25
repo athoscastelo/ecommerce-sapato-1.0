@@ -11,7 +11,8 @@ public record FuncionarioResponseDTO (
     String endereco,
     String telefone,
     String email,
-    String senha
+    String senha,
+    String nomeImagem
 ) {
     public static FuncionarioResponseDTO valueOf(Funcionario funcionario) {
         return new FuncionarioResponseDTO(
@@ -23,8 +24,8 @@ public record FuncionarioResponseDTO (
             funcionario.getClientef().getEndereco(),
             funcionario.getClientef().getTelefone(),
             funcionario.getClientef().getUsuario().getEmail(),
-            funcionario.getClientef().getUsuario().getSenha()
-
+            funcionario.getClientef().getUsuario().getSenha(),
+            funcionario.getNomeImagem()
 
         );
     }
